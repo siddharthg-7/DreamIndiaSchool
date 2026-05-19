@@ -87,8 +87,8 @@ const Hero = () => {
           </motion.div>
         </AnimatePresence>
         
-        {/* Soft, natural dark overlay matching Eduker - no heavy colors */}
-        <div className="absolute inset-0 bg-black/45 z-10"></div>
+        {/* Left-to-right gradient overlay ensuring white text pops beautifully without letting images dominate readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20 z-10"></div>
       </div>
 
       {/* Edge Arrow Navigation - Low opacity borders, rounded-full circle links */}
@@ -121,17 +121,17 @@ const Hero = () => {
               className="space-y-5"
             >
               {/* Category Subtitle */}
-              <span className="text-[12px] md:text-sm font-extrabold text-blue-400 tracking-widest uppercase block font-outfit">
+              <span className="text-[12px] md:text-sm font-extrabold text-blue-400 tracking-widest uppercase block font-outfit drop-shadow-xs">
                 {slides[currentSlide].tagline}
               </span>
 
-              {/* Huge Bold Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-extrabold text-white tracking-tight leading-[1.15] mb-4">
+              {/* Huge Bold Title - with soft shadow for superior contrast */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-extrabold text-white tracking-tight leading-[1.15] mb-4 drop-shadow-md">
                 {slides[currentSlide].title}
               </h1>
 
-              {/* Subheading */}
-              <p className="text-slate-100 text-sm md:text-base font-semibold max-w-lg leading-relaxed">
+              {/* Subheading - with soft shadow for superior contrast */}
+              <p className="text-slate-100 text-sm md:text-base font-semibold max-w-lg leading-relaxed drop-shadow-sm">
                 {slides[currentSlide].description}
               </p>
 
