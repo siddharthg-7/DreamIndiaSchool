@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0f172a;
+  --color-royal-blue: #2563eb;
+  --color-orange-highlight: #ea580c;
+
+  --font-inter: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: var(--font-inter);
+}
+
+::selection {
+  background-color: var(--color-royal-blue);
+  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
