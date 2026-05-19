@@ -36,38 +36,29 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="relative z-30 px-6 md:px-12 py-16 md:py-24 bg-slate-50 border-y border-slate-100">
+    <section className="relative z-30 px-6 md:px-12 py-20 md:py-28 bg-[#f8fafc] border-y border-slate-200/50">
       <div className="max-w-7xl mx-auto w-full flex flex-col items-center">
         
-        {/* Centered Logo with Framer Motion Animation */}
+        {/* Centered Logo with Gentle Float Animation */}
         <motion.div
-          initial={{ scale: 0.8, opacity: 0, y: 20 }}
+          initial={{ scale: 0.95, opacity: 0, y: 15 }}
           whileInView={{ scale: 1, opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ 
-            duration: 0.7, 
-            ease: "easeOut"
-          }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex flex-col items-center mb-16 text-center"
         >
-          {/* Elegant Glowing Ring Container */}
           <motion.div
-            animate={{ 
-              y: [0, -10, 0],
-            }}
+            animate={{ y: [0, -6, 0] }}
             transition={{
-              duration: 5,
+              duration: 4,
               repeat: Infinity,
               repeatType: "mirror",
               ease: "easeInOut"
             }}
-            className="relative group cursor-pointer"
+            className="relative cursor-pointer"
           >
-            {/* Ambient Glow effect */}
-            <div className="absolute -inset-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 opacity-75 blur-md group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-            
-            {/* Logo Container */}
-            <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full bg-white border-2 border-blue-500 shadow-xl flex items-center justify-center p-3.5 overflow-hidden">
+            {/* Clean Logo Container */}
+            <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-white border border-slate-200/80 shadow-md flex items-center justify-center p-4">
               <img 
                 src={disLogo} 
                 alt="Dream India School Logo" 
@@ -77,33 +68,33 @@ const WhyChooseUs = () => {
           </motion.div>
 
           {/* Accent Title and Subtitle */}
-          <h2 className="mt-6 text-3xl md:text-4xl font-outfit font-black text-[#0f172a] tracking-tight">
+          <h2 className="mt-6 text-2xl md:text-3xl font-outfit font-extrabold text-[#0f172a] tracking-tight">
             Our Core Pillars
           </h2>
-          <div className="w-16 h-1 bg-blue-600 rounded-full mt-3 mb-4"></div>
+          <div className="w-12 h-1 bg-blue-600 rounded-full mt-3 mb-4"></div>
           <p className="text-slate-500 text-xs md:text-sm font-semibold max-w-md leading-relaxed">
             Providing world-class standard curriculum and a holistic environment for future leaders.
           </p>
         </motion.div>
 
-        {/* Horizontal Card Row */}
+        {/* Grid Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {cards.map((card, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-6 md:p-8 border border-slate-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left group cursor-default"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="bg-white rounded-xl p-6 md:p-8 border border-slate-200/60 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-start text-left group cursor-default"
             >
               {/* Minimal Icon Container */}
-              <div className={`w-12 h-12 rounded-xl ${card.bg} border ${card.border} flex items-center justify-center mb-6 shrink-0 transition-transform duration-300 group-hover:scale-105`}>
+              <div className={`w-11 h-11 rounded-lg ${card.bg} border ${card.border} flex items-center justify-center mb-6 shrink-0`}>
                 {card.icon}
               </div>
               
               {/* Card Title */}
-              <h3 className="text-lg font-outfit font-extrabold text-[#0f172a] mb-2 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-base md:text-lg font-outfit font-extrabold text-[#0f172a] mb-2 group-hover:text-blue-600 transition-colors">
                 {card.title}
               </h3>
               

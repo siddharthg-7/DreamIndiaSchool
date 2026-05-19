@@ -118,7 +118,7 @@ const NoticeBoard = () => {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98, y: -10 }}
                   transition={{ duration: 0.25 }}
-                  className="p-6 md:p-8 rounded-2xl bg-slate-50 border border-slate-200/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:shadow-md hover:border-slate-300/80 transition-all duration-300 text-left group"
+                  className="p-6 md:p-8 rounded-xl bg-slate-50 border border-slate-200/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:shadow-md hover:border-slate-300/80 transition-all duration-300 text-left group"
                 >
                   <div className="space-y-2 flex-1">
                     <span className="text-[10px] font-extrabold text-blue-600 uppercase tracking-widest block font-outfit">{notice.date}</span>
@@ -129,7 +129,7 @@ const NoticeBoard = () => {
                     href={applyLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-xs font-bold text-[#334155] shadow-xs shrink-0 flex items-center gap-2 transition-colors duration-200 font-outfit"
+                    className="px-5 py-2.5 rounded-md border border-slate-200 bg-white hover:bg-slate-50 text-xs font-bold text-[#334155] shadow-xs shrink-0 flex items-center gap-2 transition-colors duration-200 font-outfit"
                   >
                     {notice.linkText} {notice.icon}
                   </a>
@@ -194,7 +194,7 @@ const NoticeBoard = () => {
               href={applyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-center text-sm shadow-md transition-all duration-200 font-outfit"
+              className="w-full py-3.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold text-center text-sm shadow-md transition-all duration-200 font-outfit cursor-pointer"
             >
               Start Enrollment
             </a>

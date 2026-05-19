@@ -73,7 +73,7 @@ const About = () => {
             <div className="pt-4">
               <a
                 href="#contact"
-                className="inline-flex px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-sm transition-all duration-200"
+                className="inline-flex px-6 py-3 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-xs transition-all duration-200 cursor-pointer"
               >
                 Learn More
               </a>

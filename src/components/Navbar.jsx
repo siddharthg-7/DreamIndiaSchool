@@ -105,7 +105,7 @@ const Navbar = () => {
               href={erpLink}
               target="_blank" 
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-[#334155] hover:bg-slate-50 hover:border-slate-300 transition-all duration-200"
+              className="px-5 py-2.5 rounded-md border border-slate-200 bg-white text-sm font-bold text-[#334155] hover:bg-slate-50 hover:border-slate-300 transition-all duration-200"
             >
               ERP Login
             </a>
@@ -113,7 +113,7 @@ const Navbar = () => {
               href={applyLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-sm transition-all duration-200 flex items-center gap-1"
+              className="px-6 py-2.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-xs transition-all duration-200 flex items-center gap-1"
             >
               Apply Now <ArrowRight className="w-4 h-4 ml-0.5" />
             </a>
@@ -170,7 +170,7 @@ const Navbar = () => {
                 href={erpLink}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-full border border-slate-200 bg-white text-[#334155] font-bold text-center hover:bg-slate-100 transition-colors text-sm"
+                className="w-full py-3 rounded-md border border-slate-200 bg-white text-[#334155] font-bold text-center hover:bg-slate-100 transition-colors text-sm"
               >
                 ERP Login
               </a>
@@ -178,7 +178,7 @@ const Navbar = () => {
                 href={applyLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-center transition-colors text-sm flex items-center justify-center gap-1.5 shadow-sm"
+                className="w-full py-3 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold text-center transition-colors text-sm flex items-center justify-center gap-1.5 shadow-xs"
               >
                 Apply Now <ArrowRight className="w-4 h-4" />
               </a>
