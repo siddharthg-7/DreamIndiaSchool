@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Calendar, UserCheck } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,25 +10,26 @@ const Hero = () => {
   const slides = [
     {
       image: "/images/dis-banner-1.png",
-      tagline: "DREAM INDIA SCHOOL",
-      title: "Together We'll Explore New Things",
-      description: "We believe everyone should have the opportunity to create progress through high-quality premium CBSE education."
+      tagline: "DREAM INDIA SCHOOL TIRUVURU",
+      title: "Nurturing Minds. Shaping Futures.",
+      description: "A future-ready CBSE education combining technology, sports excellence, and analytical thinking with deep ethical values."
     },
     {
       image: "/images/dis-banner-3.png",
-      tagline: "SECURE CAMPUS & CBSE CURRICULUM",
-      title: "Empowering Students to Learn, Lead & Succeed",
-      description: "An academic environment focused on conceptual depth, discipline, structured sports, and technology integration."
+      tagline: "SECURE CAMPUS & EXPERT FACULTY",
+      title: "Empowering Students to Learn and Lead.",
+      description: "Optimized student-teacher ratios, personalized attention, and modern smart classrooms for deep conceptual understanding."
     },
     {
       image: "/images/dis-banner-5.png",
-      tagline: "MODERN STEM INFRASTRUCTURE",
-      title: "Unlocking Practical Thinking & Innovation",
-      description: "Advanced experiment stations and digital computing laboratories designed to build computational logic."
+      tagline: "FUTURE-READY INNOVATION",
+      title: "Unlocking Practical Logic and Science.",
+      description: "State-of-the-art AI & Robotics hubs, coding labs, and experiential STEM training centers to prepare kids for tomorrow."
     }
   ];
 
   const applyLink = "https://wa.me/918886421212?text=Hello%2C%20I%20am%20interested%20in%20admissions%20at%20Dream%20India%20School%20Tiruvuru%20for%20the%20academic%20year%202026-27.";
+  const visitLink = "https://wa.me/918886421212?text=Hello%2C%20I%20would%20like%20to%20book%20a%20campus%20visit%20to%20Dream%20India%20School%20Tiruvuru.";
 
   const startTimer = () => {
     stopTimer();
@@ -60,23 +62,23 @@ const Hero = () => {
   };
 
   const textVariants = {
-    initial: { opacity: 0, y: 25 },
+    initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-    exit: { opacity: 0, y: -15, transition: { duration: 0.4, ease: "easeIn" } }
+    exit: { opacity: 0, y: -20, transition: { duration: 0.4, ease: "easeIn" } }
   };
 
   return (
-    <section className="relative w-full h-[600px] md:h-[700px] bg-slate-900 overflow-hidden select-none flex items-center">
+    <section className="relative w-full h-[550px] md:h-[650px] lg:h-[720px] bg-[#051124] overflow-hidden select-none flex items-center">
       
-      {/* Background Images Layer */}
+      {/* Background Images Slider */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.9 }}
             className="w-full h-full relative"
           >
             <img 
@@ -87,14 +89,15 @@ const Hero = () => {
           </motion.div>
         </AnimatePresence>
         
-        {/* Left-to-right gradient overlay ensuring white text pops beautifully without letting images dominate readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/20 z-10"></div>
+        {/* Custom Navy gradient overlay matching Bright Future's color scheme */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#051124]/95 via-[#051124]/80 to-[#051124]/30 z-10"></div>
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#051124] to-transparent z-10"></div>
       </div>
 
-      {/* Edge Arrow Navigation - Low opacity borders, rounded-full circle links */}
+      {/* Edge Slide Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute left-6 md:left-10 z-30 w-12 h-12 rounded-full border border-white/20 bg-black/10 hover:bg-blue-600 hover:border-blue-600 text-white transition-all duration-200 flex items-center justify-center focus:outline-none cursor-pointer"
+        className="absolute left-4 md:left-8 z-30 w-11 h-11 rounded-full border border-white/10 bg-[#0c1c33]/40 hover:bg-[#c28e34] hover:border-[#c28e34] text-white transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer"
         aria-label="Previous Slide"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -102,13 +105,13 @@ const Hero = () => {
 
       <button
         onClick={handleNext}
-        className="absolute right-6 md:right-10 z-30 w-12 h-12 rounded-full border border-white/20 bg-black/10 hover:bg-blue-600 hover:border-blue-600 text-white transition-all duration-200 flex items-center justify-center focus:outline-none cursor-pointer"
+        className="absolute right-4 md:right-8 z-30 w-11 h-11 rounded-full border border-white/10 bg-[#0c1c33]/40 hover:bg-[#c28e34] hover:border-[#c28e34] text-white transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer"
         aria-label="Next Slide"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      {/* Hero Content Container */}
+      {/* Hero Content Area */}
       <div className="relative z-20 max-w-7xl mx-auto w-full px-6 md:px-12 flex justify-start items-center">
         <div className="max-w-2xl text-left">
           <AnimatePresence mode="wait">
@@ -118,47 +121,53 @@ const Hero = () => {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="space-y-5"
+              className="space-y-6"
             >
-              {/* Category Subtitle */}
-              <span className="text-[12px] md:text-sm font-extrabold text-blue-400 tracking-widest uppercase block font-outfit drop-shadow-xs">
+              {/* Slogan Tag */}
+              <span className="text-[10px] md:text-xs font-bold text-[#c28e34] tracking-widest uppercase block font-outfit border-l-2 border-[#c28e34] pl-3">
                 {slides[currentSlide].tagline}
               </span>
 
-              {/* Huge Bold Title - with soft shadow for superior contrast */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-extrabold text-white tracking-tight leading-[1.15] mb-4 drop-shadow-md">
+              {/* Headline */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-black text-white tracking-tight leading-[1.12]">
                 {slides[currentSlide].title}
               </h1>
 
-              {/* Subheading - with soft shadow for superior contrast */}
-              <p className="text-slate-100 text-sm md:text-base font-semibold max-w-lg leading-relaxed drop-shadow-sm">
+              {/* Sub-headline */}
+              <p className="text-slate-300 text-sm md:text-base lg:text-lg font-medium max-w-xl leading-relaxed">
                 {slides[currentSlide].description}
               </p>
 
-              {/* Professional Rectangular solid/outline CTA buttons */}
+              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-                <a 
-                  href={applyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-7 py-3 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 group cursor-pointer"
-                >
-                  Find Courses <ArrowRight className="w-4 h-4" />
-                </a>
-                <a 
-                  href="#infrastructure"
-                  className="w-full sm:w-auto px-7 py-3 rounded-md border border-white/35 bg-white/5 hover:bg-white hover:text-slate-900 text-white font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  Explore Campus
-                </a>
+                <Magnetic>
+                  <a 
+                    href={applyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-extrabold text-xs font-outfit uppercase tracking-widest shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    Apply Now <ArrowRight className="w-4 h-4" />
+                  </a>
+                </Magnetic>
+                <Magnetic>
+                  <a 
+                    href={visitLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-md border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-white font-extrabold text-xs font-outfit uppercase tracking-widest bg-white/5 hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    Book a Visit
+                  </a>
+                </Magnetic>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
 
-      {/* Slider Indicators at the bottom */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+      {/* Slide Indicators Strip */}
+      <div className="absolute bottom-8 left-6 md:left-12 z-20 flex gap-2.5">
         {slides.map((_, idx) => (
           <button
             key={idx}
@@ -167,8 +176,8 @@ const Hero = () => {
               setCurrentSlide(idx);
               startTimer();
             }}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? 'bg-blue-500 w-8' : 'bg-white/40 hover:bg-white/60'
+            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === currentSlide ? 'bg-[#c28e34] w-10' : 'bg-white/30 w-5 hover:bg-white/50'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />

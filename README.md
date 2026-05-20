@@ -6,37 +6,30 @@ A premium, state-of-the-art academic landing page built with **React**, **Vite**
 
 ## 🚀 Outstanding Key Features
 
-### 1. Brand Integrity & Centered Floating Logo
-* Displays the official high-resolution **Dream India School** shield logo across sticky headers, mobile drawers, and footer blocks.
-* Centered above the core pillars grid with a smooth, loop-cycled **Framer Motion floating animation** and a vibrant, pulsing blue-indigo ambient gradient background glow.
+### 1. Reusable Magnetic CTA Physics (`Magnetic.jsx`)
+* Custom Framer Motion spring physics hook wrapper that calculates distance vectors.
+* Attracts the CTA buttons toward the user's mouse cursor by 30% of displacement for a smooth, high-fidelity interactive feel.
+* Applied to primary actions: "Apply Now", "Book a Visit", "Student Login", and "Start Enrollment".
 
-### 2. Immaculate Layout Topography
-* Features a visually balanced, alternating layout flow that alternates white and light slate sections to guide the user's eyes naturally:
-  1. **Hero Slider** (Dark immersive slideshow)
-  2. **Core Pillars** (`bg-slate-50` with animated logo)
-  3. **About Academy** (`bg-white` value columns)
-  4. **Performance Metrics** (`bg-slate-50` statistics strip)
-  5. **Affiliation Bar** (`bg-white` official CBSE badge)
-  6. **Infrastructure Showcase** (`bg-slate-50` 3-column facility showcase)
-  7. ** bulletin** (`bg-white` announcements)
-  8. **Parent Reviews** (`bg-slate-50` horizontal testimonials carousel)
-  9. **Contact & Live Map** (`bg-white` interactive block)
+### 2. Spotlight Hover Glow Cards (`WhyChooseUs.jsx`)
+* Interactive grid elements equipped with high-performance cursor tracking.
+* Deploys a radial golden overlay (`rgba(194, 142, 52, 0.12)`) tracking path movement using Framer Motion coordinates without triggering React render loops.
 
-### 3. Dynamic Category Notice Board (`NoticeBoard.jsx`)
+### 3. Asymmetrical Bento Grid Showcase (`Infrastructure.jsx`)
+* Replaces the standard grid layout with a premium 3-column, 3-row asymmetrical Bento block.
+* Wide elements feature elegant side-by-side photo/text layout rules with custom category tags and scale zooms.
+
+### 4. Dynamic Category Notice Board (`NoticeBoard.jsx`)
 * Replaced the static notifications list with a dynamic category filtering dashboard (`All Updates`, `Academics`, `Examinations`, `Sports & Events`).
 * Features a buttery smooth spring sliding background indicator on tabs driven by Framer Motion's `layoutId`, and transition fade states for circular updates using `AnimatePresence`.
 
-### 4. Auto-Playing Parent Testimonials Loop (`Testimonials.jsx`)
+### 5. Auto-Playing Parent Testimonials Loop (`Testimonials.jsx`)
 * A gorgeous sliding card loop displaying verified local parent feedback, 5-star rating vectors, and custom letter avatars.
 * Cycles automatically with a 6-second delay, supported by manual navigation chevrons and interactive dot trackers.
 
-### 5. Google Maps Live Campus Embed (`Contact.jsx`)
+### 6. Google Maps Live Campus Embed (`Contact.jsx`)
 * Incorporates a fully interactive Google Map iframe pointing directly to the verified coords of **Dream India School, Tiruvuru** (`https://maps.app.goo.gl/yGyzgVZCSiXmz4Kw5`).
 * Protected by custom rounded corners (`rounded-2xl`) and balanced shadow profiles.
-
-### 6. Premium Micro-Interactions
-* **Infrastructure Card Hovers**: Translates the adjacent `ArrowRight` icon smoothly (`group-hover:translate-x-1 transition-transform`) when hovering over facility cards.
-* **Badge Icons**: Deploys consistent, styled `lucide-react` icons inside soft rounded container badges (`rounded-xl bg-slate-50 border border-slate-100`).
 
 ---
 
@@ -60,13 +53,16 @@ dreamindiaschool/
 │   ├── components/         # Modular React components
 │   │   ├── About.jsx       # Academic wings & values
 │   │   ├── Contact.jsx     # Contact form and Google Map iframe
+│   │   ├── FeaturedPrograms.jsx # Academic vectors and learning highlights
 │   │   ├── Footer.jsx      # Multi-column footer navigation
 │   │   ├── Hero.jsx        # Image carousel slideshow
-│   │   ├── Infrastructure.jsx  # 3-column facility cards
-│   │   ├── Navbar.jsx      # Sticky navbar with mobile drawers
+│   │   ├── Infrastructure.jsx # Asymmetrical Bento Grid facility cards
+│   │   ├── Magnetic.jsx    # Cursor-attracting physics wrapper
+│   │   ├── Navbar.jsx      # Sticky navbar with mobile drawers & dropdowns
 │   │   ├── NoticeBoard.jsx # Dynamic announcements filtered bulletin
+│   │   ├── StatsStrip.jsx  # Credential numbers and campus metrics strip
 │   │   ├── Testimonials.jsx # Auto-playing parent review loop
-│   │   └── WhyChooseUs.jsx # Core pillars grid & pulsing floating logo
+│   │   └── WhyChooseUs.jsx # Core pillars grid with spotlight cursor glow
 │   ├── App.jsx             # Main layout rendering assembler
 │   ├── index.css           # Global theme styling tokens & custom fonts
 │   └── main.jsx            # Entry point mount module
