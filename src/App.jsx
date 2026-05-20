@@ -4,11 +4,11 @@ import Hero from './components/Hero';
 import StatsStrip from './components/StatsStrip';
 import WhyChooseUs from './components/WhyChooseUs';
 import FeaturedPrograms from './components/FeaturedPrograms';
+import CampusTourEventsTestimonials from './components/CampusTourEventsTestimonials';
 import About from './components/About';
 import Infrastructure from './components/Infrastructure';
 import FeatureStrip from './components/FeatureStrip';
 import NoticeBoard from './components/NoticeBoard';
-import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -28,6 +28,9 @@ function App() {
         
         {/* Featured Programs Section */}
         <FeaturedPrograms />
+
+        {/* Interactive Tour, Events & Parent Testimonials Grid */}
+        <CampusTourEventsTestimonials />
         
         {/* About Section */}
         <About />
@@ -40,9 +43,6 @@ function App() {
         
         {/* Announcements & Admissions Notice Board */}
         <NoticeBoard />
-        
-        {/* Parent Testimonials */}
-        <Testimonials />
         
         {/* Contact Page Coordinates */}
         <Contact />

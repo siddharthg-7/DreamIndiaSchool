@@ -10,13 +10,13 @@ const StatsStrip = () => {
       icon: <Star className="w-5 h-5 text-[#c28e34]" />
     },
     {
-      label: "Active Students",
-      value: "1,200+",
+      label: "Happy Students",
+      value: "5000+",
       icon: <Users className="w-5 h-5 text-[#c28e34]" />
     },
     {
-      label: "Qualified Faculty",
-      value: "45+",
+      label: "Expert Faculty",
+      value: "200+",
       icon: <GraduationCap className="w-5 h-5 text-[#c28e34]" />
     },
     {
