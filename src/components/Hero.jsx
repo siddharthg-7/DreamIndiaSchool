@@ -12,19 +12,22 @@ const Hero = ({ openModal }) => {
       image: "/images/dis-banner-1.png",
       tagline: "DREAM INDIA SCHOOL TIRUVURU",
       title: "Nurturing Minds. Shaping Futures.",
-      description: "A future-ready CBSE education combining technology, sports excellence, and analytical thinking with deep ethical values."
+      description: "A future-ready CBSE education combining technology, sports excellence, and analytical thinking with deep ethical values.",
+      focus: 'center center'
     },
     {
       image: "/images/dis-banner-3.png",
       tagline: "SECURE CAMPUS & EXPERT FACULTY",
       title: "Empowering Students to Learn and Lead.",
-      description: "Optimized student-teacher ratios, personalized attention, and modern smart classrooms for deep conceptual understanding."
+      description: "Optimized student-teacher ratios, personalized attention, and modern smart classrooms for deep conceptual understanding.",
+      focus: '70% center'
     },
     {
       image: "/images/dis-banner-5.png",
       tagline: "FUTURE-READY INNOVATION",
       title: "Unlocking Practical Logic and Science.",
-      description: "State-of-the-art AI & Robotics hubs, coding labs, and experiential STEM training centers to prepare kids for tomorrow."
+      description: "State-of-the-art AI & Robotics hubs, coding labs, and experiential STEM training centers to prepare kids for tomorrow.",
+      focus: '72% center'
     }
   ];
 
@@ -69,7 +72,7 @@ const Hero = ({ openModal }) => {
   };
 
   return (
-    <section className="relative w-full h-[550px] md:h-[650px] lg:h-[720px] bg-[#051124] overflow-hidden select-none flex items-center">
+    <section className="relative w-full h-[550px] md:h-[624px] lg:h-[624px] bg-[#051124] overflow-hidden select-none flex items-center">
       
       {/* Background Images Slider */}
       <div className="absolute inset-0 z-0">
@@ -101,6 +104,7 @@ const Hero = ({ openModal }) => {
                     src={`${base}-1920.webp`}
                     alt="Dream India Campus Slide"
                     className="w-full h-full object-cover object-center"
+                    style={{ objectPosition: slides[currentSlide].focus }}
                     loading="lazy"
                   />
                 </picture>
