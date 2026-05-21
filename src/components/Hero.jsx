@@ -89,13 +89,13 @@ const Hero = ({ openModal }) => {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet={`${base}-480.webp 480w, ${base}-768.webp 768w, ${base}-1280.webp 1280w, ${base}-1920.webp 1920w`}
-                    sizes="(min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
+                    srcSet={`${base}-480.webp 480w, ${base}-768.webp 768w, ${base}-1280.webp 1280w, ${base}-1920.webp 1920w, ${base}-3840.webp 3840w`}
+                    sizes="(min-width:1440px) 3840px, (min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
                   />
                   <source
                     type="image/jpeg"
-                    srcSet={`${base}-480.jpg 480w, ${base}-768.jpg 768w, ${base}-1280.jpg 1280w, ${base}-1920.jpg 1920w`}
-                    sizes="(min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
+                    srcSet={`${base}-480.jpg 480w, ${base}-768.jpg 768w, ${base}-1280.jpg 1280w, ${base}-1920.jpg 1920w, ${base}-3840.jpg 3840w`}
+                    sizes="(min-width:1440px) 3840px, (min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
                   />
                   <img
                     src={`${base}-1920.webp`}
