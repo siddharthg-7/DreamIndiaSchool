@@ -1,6 +1,53 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Award, Users, GraduationCap, ShieldAlert, MonitorPlay, Landmark, Star, Trophy, Sparkles } from 'lucide-react';
+
+const AnimatedCounter = ({ value, duration = 2 }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const hasAnimated = useRef(false);
+
+  // Extract prefix and suffix automatically
+  const valueStr = value.toString();
+  const numericMatch = valueStr.match(/(\d[\d,]*)/);
+  const numberPart = numericMatch ? numericMatch[0] : "";
+  const end = parseInt(numberPart.replace(/,/g, ''), 10);
+  
+  // Suffix is everything after the numbers
+  const suffix = valueStr.substring(valueStr.indexOf(numberPart) + numberPart.length);
+  // Prefix is everything before the numbers
+  const prefix = valueStr.substring(0, valueStr.indexOf(numberPart));
+
+  useEffect(() => {
+    if (inView && !hasAnimated.current) {
+      hasAnimated.current = true;
+      if (isNaN(end)) {
+        setCount(value);
+        return;
+      }
+
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          setCount(end);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+  }, [inView, end, duration, value]);
+
+  return (
+    <span ref={ref}>
+      {prefix}{isNaN(end) ? value : count.toLocaleString()}{suffix}
+    </span>
+  );
+};
 
 const StatsStrip = () => {
   const stats = [
@@ -56,7 +103,7 @@ const StatsStrip = () => {
               
               <div className="text-left">
                 <span className="block text-xl md:text-2xl font-outfit font-black text-white leading-none mb-1">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </span>
                 <span className="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-wider block font-outfit">
                   {stat.label}

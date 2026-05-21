@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown, Phone, Mail, MapPin, ArrowRight, Calendar, Award,
 import disLogo from '../assets/dis-logo.png';
 import Magnetic from './Magnetic';
 
-const Navbar = () => {
+const Navbar = ({ openModal }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -175,24 +175,20 @@ const Navbar = () => {
               </a>
             </Magnetic>
             <Magnetic>
-              <a 
-                href={visitLink}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-transparent border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-slate-200 px-3 py-1.5 rounded-md text-[10px] font-extrabold font-outfit uppercase tracking-widest transition-all duration-200"
+              <button 
+                onClick={() => openModal('visit')}
+                className="bg-transparent border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-slate-200 px-3 py-1.5 rounded-md text-[10px] font-extrabold font-outfit uppercase tracking-widest transition-all duration-200 cursor-pointer"
               >
                 Book a Visit
-              </a>
+              </button>
             </Magnetic>
             <Magnetic>
-              <a 
-                href={applyLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#c28e34] hover:bg-[#a67526] text-white px-4 py-1.5 rounded-md text-[10px] font-extrabold font-outfit uppercase tracking-widest shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-1"
+              <button 
+                onClick={() => openModal('admission')}
+                className="bg-[#c28e34] hover:bg-[#a67526] text-white px-4 py-1.5 rounded-md text-[10px] font-extrabold font-outfit uppercase tracking-widest shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-1 cursor-pointer"
               >
                 Apply Now <ArrowRight className="w-3 h-3" />
-              </a>
+              </button>
             </Magnetic>
           </div>
         </div>
@@ -334,31 +330,27 @@ const Navbar = () => {
               </div>
 
               {/* Bottom CTA Group */}
-              <div className="p-6 border-t border-white/5 bg-[#0c1c33] flex flex-col gap-3">
+              <div className="p-6 border-t border-white/5 bg-[#0c1c33] flex flex-col gap-3 text-left">
                 <a 
                   href={loginLink}
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-full py-2.5 rounded-md bg-[#122a45] hover:bg-[#162a45] text-white font-bold text-center transition-colors text-xs font-outfit uppercase tracking-widest"
+                  className="w-full py-2.5 rounded-md bg-[#122a45] hover:bg-[#162a45] text-white font-bold text-center transition-colors text-xs font-outfit uppercase tracking-widest block"
                 >
                   Student Login
                 </a>
-                <a 
-                  href={visitLink}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 rounded-md border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-slate-200 text-center font-bold transition-colors text-xs font-outfit uppercase tracking-widest"
+                <button 
+                  onClick={() => { setMobileMenuOpen(false); openModal('visit'); }}
+                  className="w-full py-2.5 rounded-md border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-slate-200 text-center font-bold transition-colors text-xs font-outfit uppercase tracking-widest cursor-pointer"
                 >
                   Book a Visit
-                </a>
-                <a 
-                  href={applyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-bold text-center transition-colors text-xs font-outfit uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md"
+                </button>
+                <button 
+                  onClick={() => { setMobileMenuOpen(false); openModal('admission'); }}
+                  className="w-full py-2.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-bold text-center transition-colors text-xs font-outfit uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md cursor-pointer"
                 >
                   Apply Now <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </button>
               </div>
             </motion.div>
           </>
