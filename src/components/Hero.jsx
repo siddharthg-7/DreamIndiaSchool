@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight, Calendar, UserCheck } from 'lucide-react';
 import Magnetic from './Magnetic';
 
-const Hero = () => {
+const Hero = ({ openModal }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const timerRef = useRef(null);
 
@@ -28,8 +28,9 @@ const Hero = () => {
     }
   ];
 
-  const applyLink = "https://wa.me/918886421212?text=Hello%2C%20I%20am%20interested%20in%20admissions%20at%20Dream%20India%20School%20Tiruvuru%20for%20the%20academic%20year%202026-27.";
-  const visitLink = "https://wa.me/918886421212?text=Hello%2C%20I%20would%20like%20to%20book%20a%20campus%20visit%20to%20Dream%20India%20School%20Tiruvuru.";
+  const getSrcBase = (imgPath) => imgPath.replace(/\.(png|jpe?g|webp)$/i, '');
+
+
 
   const startTimer = () => {
     stopTimer();
@@ -81,11 +82,30 @@ const Hero = () => {
             transition={{ duration: 0.9 }}
             className="w-full h-full relative"
           >
-            <img 
-              src={slides[currentSlide].image} 
-              alt="Dream India Campus Slide" 
-              className="w-full h-full object-cover object-center"
-            />
+            {/* Responsive picture sources: WebP primary with JPEG fallback */}
+            {(() => {
+              const base = getSrcBase(slides[currentSlide].image);
+              return (
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet={`${base}-480.webp 480w, ${base}-768.webp 768w, ${base}-1280.webp 1280w, ${base}-1920.webp 1920w`}
+                    sizes="(min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
+                  />
+                  <source
+                    type="image/jpeg"
+                    srcSet={`${base}-480.jpg 480w, ${base}-768.jpg 768w, ${base}-1280.jpg 1280w, ${base}-1920.jpg 1920w`}
+                    sizes="(min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
+                  />
+                  <img
+                    src={`${base}-1920.webp`}
+                    alt="Dream India Campus Slide"
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </picture>
+              );
+            })()}
           </motion.div>
         </AnimatePresence>
         
@@ -141,24 +161,20 @@ const Hero = () => {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
                 <Magnetic>
-                  <a 
-                    href={applyLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-3.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-extrabold text-xs font-outfit uppercase tracking-widest shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                  <button
+                    onClick={() => openModal('admission')}
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-extrabold text-xs font-outfit uppercase tracking-widest shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Apply Now <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </button>
                 </Magnetic>
                 <Magnetic>
-                  <a 
-                    href={visitLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-3.5 rounded-md border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-white font-extrabold text-xs font-outfit uppercase tracking-widest bg-white/5 hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+                  <button
+                    onClick={() => openModal('visit')}
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-md border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-white font-extrabold text-xs font-outfit uppercase tracking-widest bg-white/5 hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Book a Visit
-                  </a>
+                  </button>
                 </Magnetic>
               </div>
             </motion.div>
