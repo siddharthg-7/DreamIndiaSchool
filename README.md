@@ -1,6 +1,6 @@
 # Dream India School (DiS) - Tiruvuru Campus
 
-A premium, state-of-the-art academic landing page built with **React**, **Vite**, **Tailwind CSS v4**, and **Framer Motion**. Optimized for high-converting parent enrollment, seamless announcements filtering, and pristine visual typography.
+A premium, state-of-the-art academic landing page built with **React**, **Vite**, **Tailwind CSS v4**, and **Framer Motion**. Optimized for high-converting parent enrollment, seamless announcements filtering, and pristine visual typography.Whole Application is in Mern Stack
 
 ---
 
