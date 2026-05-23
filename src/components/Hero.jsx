@@ -74,82 +74,82 @@ const Hero = ({ openModal }) => {
   };
 
   return (
-    <section className="relative w-full h-[550px] md:h-[624px] lg:h-[624px] bg-[#051124] overflow-hidden select-none flex items-center">
-      
-      {/* Background Images Slider */}
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9 }}
-            className="w-full h-full relative"
-          >
-            {/* Responsive picture sources: WebP primary with JPEG fallback */}
-            {(() => {
-              const base = getSrcBase(slides[currentSlide].image);
-              return (
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet={`${base}-480.webp 480w, ${base}-768.webp 768w, ${base}-1280.webp 1280w, ${base}-1920.webp 1920w, ${base}-3840.webp 3840w`}
-                    sizes="(min-width:1440px) 3840px, (min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
-                  />
-                  <source
-                    type="image/jpeg"
-                    srcSet={`${base}-480.jpg 480w, ${base}-768.jpg 768w, ${base}-1280.jpg 1280w, ${base}-1920.jpg 1920w, ${base}-3840.jpg 3840w`}
-                    sizes="(min-width:1440px) 3840px, (min-width:1024px) 1920px, (min-width:768px) 1280px, 100vw"
-                  />
-                  <img
-                    src={`${base}-1920.webp`}
-                    alt="Dream India Campus Slide"
-                    className="w-full h-full object-cover object-center"
-                    style={{ objectPosition: slides[currentSlide].focus }}
-                    loading={currentSlide === 0 ? 'eager' : 'lazy'}
-                    fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
-                  />
-                </picture>
-              );
-            })()}
-          </motion.div>
-        </AnimatePresence>
-        
-        {/* Custom Navy gradient overlay matching Bright Future's color scheme */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#051124]/95 via-[#051124]/80 to-[#051124]/30 z-10"></div>
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#051124] to-transparent z-10"></div>
-      </div>
-
-      {/* Edge Slide Arrows */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 md:left-8 z-30 w-11 h-11 rounded-full border border-white/10 bg-[#0c1c33]/40 hover:bg-[#c28e34] hover:border-[#c28e34] text-white transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer"
-        aria-label="Previous Slide"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-
-      <button
-        onClick={handleNext}
-        className="absolute right-4 md:right-8 z-30 w-11 h-11 rounded-full border border-white/10 bg-[#0c1c33]/40 hover:bg-[#c28e34] hover:border-[#c28e34] text-white transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer"
-        aria-label="Next Slide"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
-
-      {/* Hero Content Area */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 md:px-12 flex justify-start items-center">
-        <div className="max-w-2xl text-left">
+    <section className="relative w-full bg-[#051124] overflow-hidden select-none">
+      <div className="relative mx-auto w-full max-w-[1640px] h-[550px] md:h-[624px] lg:h-[624px] flex items-center">
+        {/* Background Images Slider */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              variants={textVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="space-y-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.9 }}
+              className="absolute inset-0"
             >
+              {/* Responsive picture sources: WebP primary with JPEG fallback */}
+              {(() => {
+                const base = getSrcBase(slides[currentSlide].image);
+                return (
+                  <picture className="absolute inset-0 block w-full h-full">
+                    <source
+                      type="image/webp"
+                      srcSet={`${base}-480.webp 480w, ${base}-768.webp 768w, ${base}-1280.webp 1280w, ${base}-1640.webp 1640w, ${base}-1920.webp 1920w, ${base}-3840.webp 3840w`}
+                      sizes="(min-width:1640px) 1640px, 100vw"
+                    />
+                    <source
+                      type="image/jpeg"
+                      srcSet={`${base}-480.jpg 480w, ${base}-768.jpg 768w, ${base}-1280.jpg 1280w, ${base}-1640.jpg 1640w, ${base}-1920.jpg 1920w, ${base}-3840.jpg 3840w`}
+                      sizes="(min-width:1640px) 1640px, 100vw"
+                    />
+                    <img
+                      src={`${base}-1640.webp`}
+                      alt="Dream India Campus Slide"
+                      className="w-full h-full object-cover object-center"
+                      style={{ objectPosition: slides[currentSlide].focus }}
+                      loading={currentSlide === 0 ? 'eager' : 'lazy'}
+                      fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
+                    />
+                  </picture>
+                );
+              })()}
+
+              {/* Custom Navy gradient overlay matching Bright Future's color scheme */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#051124]/95 via-[#051124]/80 to-[#051124]/30"></div>
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#051124] to-transparent"></div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Edge Slide Arrows */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-4 md:left-8 z-30 w-11 h-11 rounded-full border border-white/10 bg-[#0c1c33]/40 hover:bg-[#c28e34] hover:border-[#c28e34] text-white transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer"
+          aria-label="Previous Slide"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        <button
+          onClick={handleNext}
+          className="absolute right-4 md:right-8 z-30 w-11 h-11 rounded-full border border-white/10 bg-[#0c1c33]/40 hover:bg-[#c28e34] hover:border-[#c28e34] text-white transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer"
+          aria-label="Next Slide"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Hero Content Area */}
+        <div className="relative z-20 max-w-[1640px] mx-auto w-full px-6 md:px-12 flex justify-start items-center">
+          <div className="max-w-2xl text-left">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                variants={textVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="space-y-6"
+              >
               {/* Slogan Tag */}
               <span className="text-[10px] md:text-xs font-bold text-[#c28e34] tracking-widest uppercase block font-outfit border-l-2 border-[#c28e34] pl-3">
                 {slides[currentSlide].tagline}
@@ -184,29 +184,29 @@ const Hero = ({ openModal }) => {
                   </button>
                 </Magnetic>
               </div>
-            </motion.div>
-          </AnimatePresence>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Slide Indicators Strip */}
+        <div className="absolute bottom-8 left-6 md:left-12 z-20 flex gap-2.5">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                stopTimer();
+                setCurrentSlide(idx);
+                startTimer();
+              }}
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                idx === currentSlide ? 'bg-[#c28e34] w-10' : 'bg-white/30 w-5 hover:bg-white/50'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
-
-      {/* Slide Indicators Strip */}
-      <div className="absolute bottom-8 left-6 md:left-12 z-20 flex gap-2.5">
-        {slides.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => {
-              stopTimer();
-              setCurrentSlide(idx);
-              startTimer();
-            }}
-            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? 'bg-[#c28e34] w-10' : 'bg-white/30 w-5 hover:bg-white/50'
-            }`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
-
     </section>
   );
 };
