@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail } from 'lucide-react';
 
@@ -30,7 +29,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden border-t border-slate-100 select-none">
+    <section id="contact" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden border-t border-slate-100 select-none scroll-mt-28 md:scroll-mt-32">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
         
         {/* Left Column: Contact Details */}

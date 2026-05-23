@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from 'framer-motion';
-import { Play, Quote, Star, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, Quote, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 // SpotlightCard Sub-component for 21st Dev Custom Spotlight Hover Glow
@@ -85,22 +85,22 @@ const CampusTourEventsTestimonials = () => {
   ];
 
   // Auto-play testimonials
+  const handlePrev = useCallback(() => {
+    setDirection(-1);
+    setIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
+  }, [reviews.length]);
+
+  const handleNext = useCallback(() => {
+    setDirection(1);
+    setIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
+  }, [reviews.length]);
+
   useEffect(() => {
     const timer = setInterval(() => {
       handleNext();
     }, 6000);
     return () => clearInterval(timer);
-  }, [index]);
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setDirection(1);
-    setIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
-  };
+  }, [handleNext]);
 
   const slideVariants = {
     enter: (dir) => ({
@@ -201,7 +201,7 @@ const CampusTourEventsTestimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-[#fdfbf7] p-6 md:p-7 border-[#c28e34]/20 shadow-xs text-left h-full min-h-[360px] lg:min-h-[320px]"
+            className="bg-[#fdfbf7] p-6 md:p-7 border-[#c28e34]/20 shadow-xs text-left h-full min-h-[360px] lg:min-h-[320px] flex flex-col"
           >
             <div className="flex-1 flex flex-col justify-between">
               <div>
@@ -253,7 +253,7 @@ const CampusTourEventsTestimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-[#051124] p-6 md:p-7 border-[#c28e34]/25 shadow-lg text-left h-full min-h-[360px] lg:min-h-[320px]"
+            className="bg-[#051124] p-6 md:p-7 border-[#c28e34]/25 shadow-lg text-left h-full min-h-[360px] lg:min-h-[320px] flex flex-col"
             borderHoverColor="group-hover:border-[#c28e34]/50"
           >
             {/* Glowing quote highlights */}

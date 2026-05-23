@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, Download, Calendar, CheckCircle2, BookOpen, Award, Trophy } from 'lucide-react';
 import Magnetic from './Magnetic';
@@ -70,8 +70,8 @@ const NoticeBoard = () => {
   );
 
   return (
-    <section id="admissions" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10">
+    <section id="admissions" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none scroll-mt-28 md:scroll-mt-32">
+      <div id="portal" className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10 scroll-mt-28 md:scroll-mt-32">
         
         {/* Left Column: Announcements list */}
         <div className="w-full lg:w-7/12 flex flex-col justify-start">

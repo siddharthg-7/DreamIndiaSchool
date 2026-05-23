@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone, Mail, MapPin, ArrowRight, Calendar, Award, GraduationCap, ShieldCheck, Cpu, Code, Dumbbell, Globe, BookOpen, BookCheck, ClipboardList, Clock, FileText, Landmark, UserCheck } from 'lucide-react';
 import disLogo from '../assets/dis-logo.png';
@@ -16,10 +16,6 @@ const Navbar = ({ openModal }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const applyLink = "https://wa.me/918886421212?text=Hello%2C%20I%20am%20interested%20in%20admissions%20at%20Dream%20India%20School%20Tiruvuru%20for%20the%20academic%20year%202026-27.";
-  const visitLink = "https://wa.me/918886421212?text=Hello%2C%20I%20would%20like%20to%20book%20a%20campus%20visit%20to%20Dream%20India%20School%20Tiruvuru.";
-  const loginLink = "https://wa.me/918886421212?text=Hello%2C%20I%20need%20assistance%20with%20the%20student/parent%20portal%20credentials.";
 
   const navLinks = [
     { name: 'Home', href: '#' },
@@ -162,26 +158,8 @@ const Navbar = ({ openModal }) => {
             </div>
           </div>
 
-          {/* Top Bar Right - The 3 Required CTAs */}
+          {/* Top Bar Right - Admissions CTA */}
           <div className="flex items-center gap-3">
-            <Magnetic>
-              <a 
-                href={loginLink}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-[#0c1c33] border border-white/5 hover:bg-[#162a45] text-white px-3 py-1.5 rounded-md text-[10px] font-extrabold font-outfit uppercase tracking-widest transition-all duration-200"
-              >
-                Student Login
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <button 
-                onClick={() => openModal('visit')}
-                className="bg-transparent border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-slate-200 px-3 py-1.5 rounded-md text-[10px] font-extrabold font-outfit uppercase tracking-widest transition-all duration-200 cursor-pointer"
-              >
-                Book a Visit
-              </button>
-            </Magnetic>
             <Magnetic>
               <button 
                 onClick={() => openModal('admission')}
@@ -331,20 +309,6 @@ const Navbar = ({ openModal }) => {
 
               {/* Bottom CTA Group */}
               <div className="p-6 border-t border-white/5 bg-[#0c1c33] flex flex-col gap-3 text-left">
-                <a 
-                  href={loginLink}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 rounded-md bg-[#122a45] hover:bg-[#162a45] text-white font-bold text-center transition-colors text-xs font-outfit uppercase tracking-widest block"
-                >
-                  Student Login
-                </a>
-                <button 
-                  onClick={() => { setMobileMenuOpen(false); openModal('visit'); }}
-                  className="w-full py-2.5 rounded-md border border-white/20 hover:border-[#c28e34] hover:text-[#c28e34] text-slate-200 text-center font-bold transition-colors text-xs font-outfit uppercase tracking-widest cursor-pointer"
-                >
-                  Book a Visit
-                </button>
                 <button 
                   onClick={() => { setMobileMenuOpen(false); openModal('admission'); }}
                   className="w-full py-2.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-bold text-center transition-colors text-xs font-outfit uppercase tracking-widest flex items-center justify-center gap-1.5 shadow-md cursor-pointer"

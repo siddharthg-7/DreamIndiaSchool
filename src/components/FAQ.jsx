@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
@@ -33,7 +33,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none border-b border-slate-100">
+    <section id="faq" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none border-b border-slate-100 scroll-mt-28 md:scroll-mt-32">
       {/* Decorative left blob */}
       <div className="absolute left-0 bottom-1/4 w-80 h-80 bg-slate-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
 

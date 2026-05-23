@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { ArrowRight, Cpu, Beaker, Code, Dumbbell, Globe } from 'lucide-react';
 
@@ -86,7 +85,7 @@ const FeaturedPrograms = () => {
   ];
 
   return (
-    <section id="programs" className="py-20 md:py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-100 relative overflow-hidden select-none">
+    <section id="programs" className="py-20 md:py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-100 relative overflow-hidden select-none scroll-mt-28 md:scroll-mt-32">
       {/* Background shape */}
       <div className="absolute left-0 top-1/2 w-72 h-72 bg-slate-100 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
 
@@ -134,7 +133,7 @@ const FeaturedPrograms = () => {
                 <div 
                   className={`relative bg-slate-100 overflow-hidden shrink-0 ${
                     isTopRow 
-                      ? "w-full lg:w-[45%] aspect-[4/3] lg:aspect-auto lg:min-h-full" 
+                      ? "w-full lg:w-[45%] aspect-[4/3] lg:aspect-auto lg:self-stretch lg:min-h-full" 
                       : "w-full aspect-[16/10]"
                   }`}
                 >

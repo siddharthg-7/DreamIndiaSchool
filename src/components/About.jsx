@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
@@ -10,7 +9,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none">
+    <section id="academics" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none scroll-mt-28 md:scroll-mt-32">
       <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16 relative z-10">
         
         {/* Left Side: Campus Student Image */}

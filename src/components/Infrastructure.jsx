@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Laptop, Beaker, Trophy, Sparkles, ArrowRight } from 'lucide-react';
 
@@ -11,7 +10,7 @@ const Infrastructure = () => {
       image: "/images/dis-banner-3.png",
       icon: Laptop,
       gridClass: "md:col-span-2 lg:col-span-2 flex flex-col md:flex-row",
-      imgClass: "w-full h-[200px] md:w-1/2 md:h-full",
+      imgClass: "w-full h-[220px] md:w-1/2 md:min-h-full md:h-auto",
       contentClass: "w-full md:w-1/2"
     },
     {
@@ -21,7 +20,7 @@ const Infrastructure = () => {
       image: "/images/dis-banner-5.png",
       icon: Beaker,
       gridClass: "md:col-span-1 lg:col-span-1 flex flex-col",
-      imgClass: "w-full h-[200px] md:h-[180px] lg:h-[180px]",
+      imgClass: "w-full h-[220px] md:h-[180px] lg:h-[180px]",
       contentClass: "w-full"
     },
     {
@@ -31,7 +30,7 @@ const Infrastructure = () => {
       image: "/images/dis-banner-4.png",
       icon: Sparkles,
       gridClass: "md:col-span-1 lg:col-span-1 flex flex-col",
-      imgClass: "w-full h-[200px] md:h-[180px] lg:h-[180px]",
+      imgClass: "w-full h-[220px] md:h-[180px] lg:h-[180px]",
       contentClass: "w-full"
     },
     {
@@ -41,7 +40,7 @@ const Infrastructure = () => {
       image: "/images/dis-banner-2.png",
       icon: Trophy,
       gridClass: "md:col-span-1 lg:col-span-1 flex flex-col",
-      imgClass: "w-full h-[200px] md:h-[180px] lg:h-[180px]",
+      imgClass: "w-full h-[220px] md:h-[180px] lg:h-[180px]",
       contentClass: "w-full"
     },
     {
@@ -51,13 +50,13 @@ const Infrastructure = () => {
       image: "/images/dis-banner-1.png",
       icon: BookOpen,
       gridClass: "md:col-span-1 lg:col-span-1 flex flex-col",
-      imgClass: "w-full h-[200px] md:h-[180px] lg:h-[180px]",
+      imgClass: "w-full h-[220px] md:h-[180px] lg:h-[180px]",
       contentClass: "w-full"
     }
   ];
 
   return (
-    <section id="infrastructure" className="py-20 md:py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-100 select-none">
+    <section id="infrastructure" className="py-20 md:py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-100 select-none scroll-mt-28 md:scroll-mt-32">
       <div className="max-w-7xl mx-auto w-full">
         
         {/* Section Header */}
@@ -88,7 +87,7 @@ const Infrastructure = () => {
                 className={`bg-white rounded-2xl overflow-hidden border border-[#c28e34]/15 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(194,142,52,0.12)] hover:border-[#c28e34]/35 hover:-translate-y-1.5 transition-all duration-500 flex flex-col group cursor-default h-full ${item.gridClass}`}
               >
                 {/* Photo Area */}
-                <div className={`relative overflow-hidden shrink-0 w-full h-[200px] ${item.imgClass}`}>
+                <div className={`relative overflow-hidden shrink-0 w-full ${item.imgClass}`}>
                   <img 
                     src={item.image} 
                     alt={item.title} 

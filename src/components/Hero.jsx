@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ArrowRight, Calendar, UserCheck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import Magnetic from './Magnetic';
+
+const SLIDE_COUNT = 3;
 
 const Hero = ({ openModal }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -35,33 +37,33 @@ const Hero = ({ openModal }) => {
 
 
 
-  const startTimer = () => {
-    stopTimer();
-    timerRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-  };
-
-  const stopTimer = () => {
+  const stopTimer = useCallback(() => {
     if (timerRef.current) {
       clearInterval(timerRef.current);
     }
-  };
+  }, []);
+
+  const startTimer = useCallback(() => {
+    stopTimer();
+    timerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT);
+    }, 6000);
+  }, [stopTimer]);
 
   useEffect(() => {
     startTimer();
     return () => stopTimer();
-  }, []);
+  }, [startTimer, stopTimer]);
 
   const handlePrev = () => {
     stopTimer();
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setCurrentSlide((prev) => (prev === 0 ? SLIDE_COUNT - 1 : prev - 1));
     startTimer();
   };
 
   const handleNext = () => {
     stopTimer();
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setCurrentSlide((prev) => (prev + 1) % SLIDE_COUNT);
     startTimer();
   };
 
@@ -105,7 +107,8 @@ const Hero = ({ openModal }) => {
                     alt="Dream India Campus Slide"
                     className="w-full h-full object-cover object-center"
                     style={{ objectPosition: slides[currentSlide].focus }}
-                    loading="lazy"
+                    loading={currentSlide === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
                   />
                 </picture>
               );

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn, Eye, Sparkles } from 'lucide-react';
+import { X, ZoomIn } from 'lucide-react';
 
 const Gallery = () => {
   const [filter, setFilter] = useState('all');
@@ -71,7 +71,7 @@ const Gallery = () => {
   );
 
   return (
-    <section id="gallery" className="py-20 md:py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-100 relative overflow-hidden select-none">
+    <section id="gallery" className="py-20 md:py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-100 relative overflow-hidden select-none scroll-mt-28 md:scroll-mt-32">
       {/* Decorative gradient blob */}
       <div className="absolute right-0 top-1/4 w-80 h-80 bg-slate-100 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
 
@@ -128,7 +128,7 @@ const Gallery = () => {
                 onClick={() => setSelectedItem(item)}
               >
                 {/* Image and Zoom Overlay */}
-                <div className="w-full h-full relative overflow-hidden flex">
+                <div className="w-full h-full relative overflow-hidden flex items-stretch">
                   <img 
                     src={item.image} 
                     alt={item.title} 
@@ -184,7 +184,7 @@ const Gallery = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Photo View */}
-                <div className="w-full md:w-8/12 bg-black flex items-center justify-center relative overflow-hidden aspect-[4/3] md:aspect-auto">
+                <div className="w-full md:w-8/12 bg-black flex items-center justify-center relative overflow-hidden aspect-[4/3] md:aspect-auto md:min-h-[55vh]">
                   <img 
                     src={selectedItem.image} 
                     alt={selectedItem.title} 
