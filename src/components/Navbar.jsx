@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone, Mail, MapPin, ArrowRight, Calendar, Award, GraduationCap, ShieldCheck, Cpu, Code, Dumbbell, Globe, BookOpen, BookCheck, ClipboardList, Clock, FileText, Landmark, UserCheck } from 'lucide-react';
 import disLogo from '../assets/dis-logo.png';
 import Magnetic from './Magnetic';
+import { getTelUrl } from '../lib/phoneApi';
 
 const Navbar = ({ openModal }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -148,7 +149,7 @@ const Navbar = ({ openModal }) => {
               <Mail className="w-3.5 h-3.5 text-[#c28e34]" />
               <span className="font-medium">admissions@dreamindia.com</span>
             </a>
-            <a href="tel:+918886421212" className="flex items-center gap-2 hover:text-[#c28e34] transition-colors">
+            <a href={getTelUrl()} className="flex items-center gap-2 hover:text-[#c28e34] transition-colors">
               <Phone className="w-3.5 h-3.5 text-[#c28e34]" />
               <span className="font-medium">+91 88864 21212</span>
             </a>

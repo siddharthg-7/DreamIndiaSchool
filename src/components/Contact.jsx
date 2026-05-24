@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail } from 'lucide-react';
+import { getTelUrl } from '../lib/phoneApi';
 
 const Contact = () => {
   const contactData = [
@@ -16,7 +17,7 @@ const Contact = () => {
       icon: <Phone className="w-5 h-5 text-[#c28e34]" />,
       bg: "bg-[#fdfbf7]",
       border: "border-[#c28e34]/25",
-      href: "tel:+918886421212"
+      href: getTelUrl()
     },
     {
       title: "Support E-Mail",

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Globe, MessageCircle, MapPin, Phone, Mail } from 'lucide-react';
+import { getWhatsAppUrl, getTelUrl } from '../lib/phoneApi';
 import disLogo from '../assets/dis-logo.png';
 
 const Footer = () => {
-  const whatsappUrl = "https://wa.me/918886421212?text=Hello%2C%20I%20am%20interested%20in%20admissions%20at%20Dream%20India%20School%20Tiruvuru%20for%20the%20academic%20year%202026-27.";
+  const whatsappUrl = getWhatsAppUrl({ text: 'Hello, I am interested in admissions at Dream India School Tiruvuru for the academic year 2026-27.' });
 
   return (
     <footer className="bg-[#051124] text-slate-300 border-t border-[#c28e34]/20 pt-20 pb-10 px-6 md:px-12 relative overflow-hidden">
@@ -59,7 +60,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-2.5">
               <Phone className="w-4 h-4 text-[#c28e34] shrink-0" />
-              <a href="tel:+918886421212" className="hover:text-white transition-colors">+91 88864 21212</a>
+              <a href={getTelUrl()} className="hover:text-white transition-colors">+91 88864 21212</a>
             </li>
             <li className="flex items-center gap-2.5">
               <Mail className="w-4 h-4 text-[#c28e34] shrink-0" />

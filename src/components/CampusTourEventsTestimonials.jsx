@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { Play, Quote, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Magnetic from './Magnetic';
+import { getWhatsAppUrl } from '../lib/phoneApi';
 
 // SpotlightCard Sub-component for 21st Dev Custom Spotlight Hover Glow
 const SpotlightCard = ({ children, className, initial, whileInView, viewport, transition, borderHoverColor = "group-hover:border-[#c28e34]/40" }) => {
@@ -51,7 +52,7 @@ const CampusTourEventsTestimonials = () => {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  const visitLink = "https://wa.me/918886421212?text=Hello%2C%20I%20would%20like%20to%20book%20a%20campus%20visit%20to%20Dream%20India%20School%20Tiruvuru.";
+  const visitLink = getWhatsAppUrl({ text: 'Hello, I would like to book a campus visit to Dream India School Tiruvuru.' });
 
   const reviews = [
     {

@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, ArrowRight, Zap, Download } from 'lucide-react';
+import { getWhatsAppUrl } from '../lib/phoneApi';
 
 const AdmissionCTA = () => {
-  const whatsappUrl = "https://wa.me/918886421212?text=Hello%2C%20I%20am%20interested%20in%20admissions%20at%20Dream%20India%20School%20Tiruvuru%20for%20the%20academic%20year%202026-27.%20Kindly%20provide%20more%20details.";
+  const whatsappUrl = getWhatsAppUrl({ text: 'Hello, I am interested in admissions at Dream India School Tiruvuru for the academic year 2026-27. Kindly provide more details.' });
 
   return (
     <section id="admissions" className="py-32 px-6 md:px-12 relative overflow-hidden">

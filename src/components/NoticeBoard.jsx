@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, Download, Calendar, CheckCircle2, BookOpen, Award, Trophy } from 'lucide-react';
 import Magnetic from './Magnetic';
+import { getWhatsAppUrl } from '../lib/phoneApi';
 
 const NoticeBoard = () => {
-  const applyLink = "https://wa.me/918886421212?text=Hello%2C%20I%20am%20interested%20in%20admissions%20at%20Dream%20India%20School%20Tiruvuru%20for%20the%20academic%20year%202026-27.";
+  const applyLink = getWhatsAppUrl({ text: 'Hello, I am interested in admissions at Dream India School Tiruvuru for the academic year 2026-27.' });
   const [activeTab, setActiveTab] = useState('all');
 
   const tabs = [

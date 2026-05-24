@@ -8,6 +8,7 @@ const InquiryModal = ({ isOpen, onClose, initialType = 'admission' }) => {
   const [studentName, setStudentName] = useState('');
   const [grade, setGrade] = useState('Grade I');
   const [phone, setPhone] = useState('');
+  const [countryCode, setCountryCode] = useState('+91');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -19,6 +20,7 @@ const InquiryModal = ({ isOpen, onClose, initialType = 'admission' }) => {
       setParentName('');
       setStudentName('');
       setGrade('Grade I');
+      setCountryCode('+91');
       setPhone('');
       setMessage('');
     }
@@ -32,16 +34,16 @@ const InquiryModal = ({ isOpen, onClose, initialType = 'admission' }) => {
     }
 
     const baseText = `Hello, I would like to make an inquiry for Dream India School Tiruvuru.
-    
-Inquiry Type: ${inquiryType === 'visit' ? 'Campus Visit Booking' : 'Admission Inquiry'}
-Parent Name: ${parentName}
-Student Name: ${studentName}
-Grade of Interest: ${grade}
-Parent Contact: ${phone}
-${message ? `Additional Message: ${message}` : ''}`;
+
+  Inquiry Type: ${inquiryType === 'visit' ? 'Campus Visit Booking' : 'Admission Inquiry'}
+  Parent Name: ${parentName}
+  Student Name: ${studentName}
+  Grade of Interest: ${grade}
+  Parent Contact: ${countryCode} ${phone}
+  ${message ? `Additional Message: ${message}` : ''}`;
 
     const encodedText = encodeURIComponent(baseText);
-    const whatsappUrl = `https://wa.me/918886421212?text=${encodedText}`;
+    const whatsappUrl = getWhatsAppUrl({ text: encodedText });
     
     setSubmitted(true);
     
@@ -71,7 +73,7 @@ ${message ? `Additional Message: ${message}` : ''}`;
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-            className="relative bg-white border border-[#c28e34]/25 max-w-lg w-full rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh]"
+            className="relative bg-white border border-[#c28e34]/25 max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[90vh]"
           >
             {/* Inner top glow border */}
             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#c28e34] to-transparent"></div>
@@ -85,7 +87,7 @@ ${message ? `Additional Message: ${message}` : ''}`;
             </button>
 
             {/* Content Area */}
-            <div className="p-6 md:p-8 overflow-y-auto text-left">
+            <div className="p-8 md:p-10 overflow-y-auto text-left">
               
               {submitted ? (
                 // Success State View
@@ -197,14 +199,28 @@ ${message ? `Additional Message: ${message}` : ''}`;
                         <label className="text-xs font-bold text-slate-600 uppercase tracking-wider font-outfit flex items-center gap-1.5">
                           <Smartphone className="w-3.5 h-3.5 text-[#c28e34]" /> Phone Number <span className="text-rose-500">*</span>
                         </label>
-                        <input 
-                          type="tel" 
-                          required
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          placeholder="e.g. +91 98765 43210" 
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#c28e34] focus:ring-1 focus:ring-[#c28e34] outline-none text-sm text-[#051124] font-semibold bg-slate-50 focus:bg-white transition-all placeholder:text-slate-400"
-                        />
+                        <div className="flex items-center gap-2">
+                          <select
+                            value={countryCode}
+                            onChange={(e) => setCountryCode(e.target.value)}
+                            className="px-3 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold focus:border-[#c28e34] focus:ring-1 focus:ring-[#c28e34] outline-none cursor-pointer"
+                          >
+                            <option value="+91">India +91</option>
+                            <option value="+1">USA +1</option>
+                            <option value="+44">UK +44</option>
+                            <option value="+971">UAE +971</option>
+                            <option value="+61">Australia +61</option>
+                          </select>
+
+                          <input
+                            type="tel"
+                            required
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder="e.g. 98765 43210"
+                            className="flex-1 px-4 py-3 rounded-xl border border-slate-200 focus:border-[#c28e34] focus:ring-1 focus:ring-[#c28e34] outline-none text-sm text-[#051124] font-semibold bg-slate-50 focus:bg-white transition-all placeholder:text-slate-400"
+                          />
+                        </div>
                       </div>
 
                     </div>
