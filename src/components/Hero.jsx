@@ -105,7 +105,7 @@ const Hero = ({ openModal }) => {
                     <img
                       src={`${base}-1640.webp`}
                       alt="Dream India Campus Slide"
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-contain"
                       style={{ objectPosition: slides[currentSlide].focus }}
                       loading={currentSlide === 0 ? 'eager' : 'lazy'}
                       fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
