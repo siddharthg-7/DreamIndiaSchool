@@ -93,7 +93,7 @@ const Infrastructure = () => {
                     alt={item.title} 
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 bg-[#051124]/90 backdrop-blur-xs px-3 py-1 rounded-full text-[9px] font-bold tracking-widest text-[#c28e34] uppercase border border-[#c28e34]/35">
+                  <div className="absolute top-4 left-4 bg-[#051124]/90 backdrop-blur-sm px-3 py-1 rounded-full text-[9px] font-bold tracking-widest text-[#c28e34] uppercase border border-[#c28e34]/35">
                     {item.category}
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const Infrastructure = () => {
                   {/* Action Link */}
                   <a 
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-[#c28e34] font-bold text-[10px] hover:text-[#a67526] tracking-wide font-outfit uppercase mt-auto"
+                    className="inline-flex items-center gap-1.5 text-[#c28e34] font-bold text-[10px] hover:text-[#a67526] tracking-wide font-outfit uppercase mt-auto group"
                   >
                     View Details <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                   </a>

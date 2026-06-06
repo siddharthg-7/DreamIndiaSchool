@@ -23,7 +23,7 @@ const Leadership = () => {
             <img 
               src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2940&auto=format&fit=crop" 
               alt="Chairman Dr. K. Sridhar" 
-              className="w-full h-full object-cover transition-all duration-700 hover:scale-103"
+              className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
             />
             
             <div className="absolute bottom-0 left-0 p-6 md:p-8 z-20 text-left">

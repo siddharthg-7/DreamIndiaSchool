@@ -132,7 +132,7 @@ const Gallery = () => {
                   <img 
                     src={item.image} 
                     alt={item.title} 
-                    className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-700"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   />
                   {/* Glassmorphic hover overlay */}
                   <div className="absolute inset-0 bg-[#051124]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-left z-20">
@@ -147,7 +147,7 @@ const Gallery = () => {
                     </h4>
                   </div>
                   {/* Category Badge (shown on non-hover mobile) */}
-                  <div className="absolute top-4 left-4 bg-[#051124]/90 backdrop-blur-xs px-2.5 py-1 rounded-md text-[9px] font-extrabold tracking-widest text-[#c28e34] uppercase border border-[#c28e34]/30 z-10 group-hover:opacity-0 transition-opacity">
+                  <div className="absolute top-4 left-4 bg-[#051124]/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[9px] font-extrabold tracking-widest text-[#c28e34] uppercase border border-[#c28e34]/30 z-10 group-hover:opacity-0 transition-opacity">
                     {item.category}
                   </div>
                 </div>

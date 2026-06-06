@@ -140,10 +140,10 @@ const FeaturedPrograms = () => {
                   <img 
                     src={prog.image} 
                     alt={prog.title} 
-                    className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Category Badge */}
-                  <div className="absolute top-3 left-3 bg-[#051124]/90 backdrop-blur-xs px-2.5 py-1 rounded-md text-[9px] font-extrabold tracking-widest text-[#c28e34] uppercase border border-[#c28e34]/30">
+                  <div className="absolute top-3 left-3 bg-[#051124]/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-[9px] font-extrabold tracking-widest text-[#c28e34] uppercase border border-[#c28e34]/30">
                     {prog.category}
                   </div>
                 </div>
@@ -175,9 +175,9 @@ const FeaturedPrograms = () => {
                   {/* Explore button */}
                   <a 
                     href="#contact"
-                    className="inline-flex items-center gap-1.5 text-[#c28e34] hover:text-[#a67526] font-bold text-xs tracking-wide font-outfit uppercase mt-auto group/btn"
+                    className="inline-flex items-center gap-1.5 text-[#c28e34] hover:text-[#a67526] font-bold text-xs tracking-wide font-outfit uppercase mt-auto group"
                   >
-                    Explore Program <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                    Explore Program <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                   </a>
                 </div>
               </SpotlightProgramCard>

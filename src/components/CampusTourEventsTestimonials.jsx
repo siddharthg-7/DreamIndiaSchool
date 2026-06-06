@@ -158,7 +158,7 @@ const CampusTourEventsTestimonials = () => {
               <img 
                 src="/images/dis-banner-2.png" 
                 alt="Dream India School Campus Corridor" 
-                className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-700"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               {/* Semi-transparent dark overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#051124] via-[#051124]/65 to-transparent z-10"></div>
@@ -169,7 +169,7 @@ const CampusTourEventsTestimonials = () => {
               {/* Outer ripple rings */}
               <div className="absolute inset-0 rounded-full bg-white/10 animate-ping opacity-70 group-hover:bg-[#c28e34]/30 pointer-events-none"></div>
               <div className="absolute -inset-2 rounded-full bg-white/5 animate-pulse opacity-40 group-hover:bg-[#c28e34]/20 pointer-events-none"></div>
-              <Play className="w-5 h-5 text-white fill-white translate-x-0.5 relative z-10" />
+              <Play className="w-5 h-5 text-white fill-white translate-x-0 relative z-10" />
             </div>
 
             {/* Content info */}
@@ -241,9 +241,9 @@ const CampusTourEventsTestimonials = () => {
 
               <a 
                 href="#contact"
-                className="inline-flex items-center gap-1.5 text-[#c28e34] hover:text-[#a67526] font-bold text-xs tracking-wider font-outfit uppercase mt-6 group/btn w-fit"
+                className="inline-flex items-center gap-1.5 text-[#c28e34] hover:text-[#a67526] font-bold text-xs tracking-wider font-outfit uppercase mt-6 group w-fit"
               >
-                View All Events <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                View All Events <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </SpotlightCard>

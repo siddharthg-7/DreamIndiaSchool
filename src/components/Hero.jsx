@@ -75,7 +75,7 @@ const Hero = ({ openModal }) => {
 
   return (
     <section className="relative w-full bg-[#051124] overflow-hidden select-none">
-      <div className="relative mx-auto w-full max-w-[1640px] h-[550px] md:h-[624px] lg:h-[624px] flex items-center">
+      <div className="relative mx-auto w-full max-w-[1640px] h-[420px] sm:h-[480px] md:h-[624px] lg:h-[624px] flex items-center">
         {/* Background Images Slider */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <AnimatePresence mode="wait">
@@ -105,7 +105,7 @@ const Hero = ({ openModal }) => {
                     <img
                       src={`${base}-1640.webp`}
                       alt="Dream India Campus Slide"
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                       style={{ objectPosition: slides[currentSlide].focus }}
                       loading={currentSlide === 0 ? 'eager' : 'lazy'}
                       fetchPriority={currentSlide === 0 ? 'high' : 'auto'}

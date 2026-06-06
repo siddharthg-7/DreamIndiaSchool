@@ -10,6 +10,10 @@
   --color-gold-hover: #a67526;
   --color-gold-light: #e6b761;
   --color-gold-pale: #fdfbf7;
+  /* Accent tokens used across small UI bits */
+  --accent: var(--color-gold);
+  --accent-bg: rgba(194,142,52,0.06);
+  --accent-border: rgba(194,142,52,0.18);
   
   --font-inter: 'Inter', sans-serif;
   --font-outfit: 'Outfit', sans-serif;
