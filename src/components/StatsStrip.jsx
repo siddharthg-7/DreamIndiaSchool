@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Award, Users, GraduationCap, ShieldAlert, MonitorPlay, Landmark, Star, Trophy, Sparkles } from 'lucide-react';
+import { Users, GraduationCap, Star, Trophy, Sparkles } from 'lucide-react';
 
 const AnimatedCounter = ({ value, duration = 2 }) => {
   const [count, setCount] = useState(0);
@@ -23,7 +23,8 @@ const AnimatedCounter = ({ value, duration = 2 }) => {
     if (inView && !hasAnimated.current) {
       hasAnimated.current = true;
       if (isNaN(end)) {
-        setCount(value);
+        // defer to avoid sync setState inside effect
+        setTimeout(() => setCount(value), 0);
         return;
       }
 

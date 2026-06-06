@@ -1,0 +1,78 @@
+.academics-section .card {
+  background: #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(6,23,42,0.06);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  display: flex;
+  flex-direction: column;
+}
+.academics-section .card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.academics-section .card-body {
+  padding: 1rem;
+}
+.academics-section .card-title {
+  font-weight: 800;
+  color: #051124;
+  margin-bottom: 0.5rem;
+}
+.academics-section .card-desc {
+  color: #475569;
+  font-size: 0.95rem;
+}
+.academics-section .prose-card {
+  background: #fbfbff;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(6,23,42,0.04);
+}
+.academics-section .stat-card {
+  background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: left;
+  border: 1px solid rgba(6,23,42,0.04);
+}
+.academics-section .stat-icon { display: inline-flex; align-items: center; justify-content: center; }
+.academics-section .stat-icon svg { width: 28px; height: 28px; color: #c28e34; }
+.academics-section .inline-icon { margin-right: 0.5rem; vertical-align: -0.1rem; color: #c28e34; width: 18px; height: 18px; }
+.academics-section .inline-icon svg { width: 18px; height: 18px; color: #c28e34; }
+.academics-section .stat-title { font-weight: 700; color: #051124; margin-top: 0.5rem; }
+.academics-section .stat-desc { color: #516074; font-size: 0.92rem; margin-top: 0.35rem; }
+
+/* Professional grid layout */
+.academics-grid{
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+}
+.academics-section .detail-column{ }
+.academics-section .detail-card{
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(6,23,42,0.04);
+  box-shadow: 0 8px 24px rgba(6,23,42,0.04);
+}
+.detail-heading{ font-size: 1.125rem; font-weight: 800; color: #051124; margin-bottom: 8px; }
+.detail-lead{ color:#475569; margin-bottom: 12px; line-height:1.5 }
+.detail-list{ list-style:none; padding:0; margin:0; display:block; }
+.detail-list li{ padding:8px 0; color:#394b59; display:flex; align-items:center }
+
+.stats-column{ }
+.stats-grid{ display:flex; flex-direction:column; gap:12px }
+.academics-section .stat-card{ display:flex; gap:12px; align-items:flex-start; padding:14px; }
+.academics-section .stat-body{ }
+.stat-heading{ font-weight:700; font-size:0.98rem; color:#051124; margin:0 }
+.academics-section .stat-desc{ margin:6px 0 0; color:#516074; font-size:0.92rem }
+
+@media (max-width: 768px){
+  .academics-grid{ grid-template-columns: 1fr; }
+  .stats-column{ order: 2 }
+  .detail-column{ order: 1 }
+}

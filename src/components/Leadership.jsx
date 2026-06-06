@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
@@ -20,9 +20,10 @@ const Leadership = () => {
             className="relative rounded-2xl overflow-hidden aspect-[4/5] border border-[#c28e34]/25 shadow-xl max-w-[400px] mx-auto md:mx-0"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-[#051124] via-[#051124]/30 to-transparent z-10"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2940&auto=format&fit=crop" 
-              alt="Chairman Dr. K. Sridhar" 
+            <img
+              src="/images/chairman.jpg"
+              alt="Chairman"
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2940&auto=format&fit=crop'; }}
               className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
             />
             

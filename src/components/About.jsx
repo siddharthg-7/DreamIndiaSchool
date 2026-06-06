@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, GraduationCap, Users, ShieldCheck } from 'lucide-react';
+import { GraduationCap, Users, ShieldCheck } from 'lucide-react';
 
 const FeatureCard = ({ icon: Icon, title, desc }) => (
   <div className="bg-white rounded-2xl p-5 border border-[#e9e9ef] shadow-sm hover:shadow-md transition-all duration-300">

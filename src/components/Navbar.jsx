@@ -18,6 +18,24 @@ const Navbar = ({ openModal }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile drawer is open and handle Escape to close
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    const onKey = (e) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
@@ -184,8 +202,9 @@ const Navbar = ({ openModal }) => {
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           
           {/* Logo Section */}
-          <div 
-            className="flex items-center gap-3.5 cursor-pointer select-none" 
+          <button
+            aria-label="Scroll to top"
+            className="flex items-center gap-3.5 cursor-pointer select-none bg-transparent border-0 p-0"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <div className="relative">
@@ -200,10 +219,10 @@ const Navbar = ({ openModal }) => {
                 SCHOOL • TIRUVURU
               </span>
             </div>
-          </div>
+          </button>
 
           {/* Navigation Links - Dark Navy style */}
-          <div className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-7" aria-label="Primary">
             {navLinks.map((link) => (
               <div 
                 key={link.name} 
@@ -245,11 +264,14 @@ const Navbar = ({ openModal }) => {
                 )}
               </div>
             ))}
-          </div>
+          </nav>
 
           {/* Right Mobile Toggle */}
           <div className="flex items-center gap-4 lg:hidden">
             <button
+              aria-label="Open menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-drawer"
               className="text-white hover:text-[#c28e34] p-2 bg-[#122a45] rounded-lg transition-colors focus:outline-none"
               onClick={() => setMobileMenuOpen(true)}
             >
@@ -277,7 +299,10 @@ const Navbar = ({ openModal }) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-[110] bg-[#051124] w-full max-w-[320px] border-l border-white/10 shadow-2xl flex flex-col h-full text-slate-100"
+              id="mobile-drawer"
+              role="dialog"
+              aria-modal="true"
+              className="fixed inset-y-0 right-0 z-[110] bg-[#051124] w-full max-w-[360px] sm:max-w-[420px] border-l border-white/10 shadow-2xl flex flex-col h-full text-slate-100"
             >
               {/* Header */}
               <div className="p-6 flex justify-between items-center border-b border-white/5 bg-[#0c1c33]">

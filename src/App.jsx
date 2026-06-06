@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import StatsStrip from './components/StatsStrip';
@@ -8,6 +8,8 @@ import CampusTourEventsTestimonials from './components/CampusTourEventsTestimoni
 import About from './components/About';
 import Leadership from './components/Leadership';
 import Infrastructure from './components/Infrastructure';
+import Academics from './components/Academics';
+import AnimatedSection from './components/AnimatedSection';
 import FeatureStrip from './components/FeatureStrip';
 import Gallery from './components/Gallery';
 import NoticeBoard from './components/NoticeBoard';
@@ -15,10 +17,34 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import InquiryModal from './components/InquiryModal';
+import Lenis from 'lenis';
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState('admission');
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 0.95
+    });
+
+    let frame = 0;
+    const raf = (time) => {
+      lenis.raf(time);
+      frame = window.requestAnimationFrame(raf);
+    };
+
+    frame = window.requestAnimationFrame(raf);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      lenis.destroy();
+    };
+  }, []);
 
   const openModal = (type = 'admission') => {
     setModalType(type);
@@ -34,43 +60,74 @@ function App() {
       <Navbar openModal={openModal} />
       <main className="flex-1 w-full flex flex-col">
         {/* Hero Section */}
-        <Hero openModal={openModal} />
+        <AnimatedSection>
+          <Hero openModal={openModal} />
+        </AnimatedSection>
 
         {/* Statistics Banner */}
-        <StatsStrip />
+        <AnimatedSection>
+          <StatsStrip />
+        </AnimatedSection>
 
         {/* Why Choose Us Section */}
-        <WhyChooseUs />
+        <AnimatedSection>
+          <WhyChooseUs />
+        </AnimatedSection>
 
         {/* Featured Programs Section */}
-        <FeaturedPrograms />
+        <AnimatedSection>
+          <FeaturedPrograms />
+        </AnimatedSection>
 
         {/* Interactive Tour, Events & Parent Testimonials Grid */}
-        <CampusTourEventsTestimonials />
+        <AnimatedSection>
+          <CampusTourEventsTestimonials />
+        </AnimatedSection>
 
         {/* About Section */}
-        <About />
+        <AnimatedSection>
+          <About />
+        </AnimatedSection>
 
         {/* Chairman's Leadership Vision */}
-        <Leadership />
+        <AnimatedSection>
+          <Leadership />
+        </AnimatedSection>
+
+        {/* Academics Overview */}
+        <AnimatedSection>
+          <Academics />
+        </AnimatedSection>
 
         {/* Academic & Facility Showcase */}
-        <Infrastructure />
+        <AnimatedSection>
+          <Infrastructure />
+        </AnimatedSection>
 
         {/* Affiliation / Certifications */}
-        <FeatureStrip />
+        <AnimatedSection>
+          <FeatureStrip />
+        </AnimatedSection>
 
         {/* Campus Gallery - Filterable Bento Grid */}
-        <Gallery />
+        <AnimatedSection>
+          <Gallery />
+        </AnimatedSection>
 
         {/* Announcements & Admissions Notice Board */}
-        <NoticeBoard openModal={openModal} />
+        <AnimatedSection>
+          <NoticeBoard openModal={openModal} />
+        </AnimatedSection>
 
         {/* Frequently Asked Questions */}
-        <FAQ />
+        <AnimatedSection>
+          <FAQ />
+        </AnimatedSection>
 
         {/* Contact Page Coordinates */}
-        <Contact openModal={openModal} />
+        <AnimatedSection>
+          <Contact openModal={openModal} />
+        </AnimatedSection>
       </main>
       <Footer openModal={openModal} />
 

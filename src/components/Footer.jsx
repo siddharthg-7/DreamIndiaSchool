@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 import { Globe, MessageCircle, MapPin, Phone, Mail } from 'lucide-react';
 import { getWhatsAppUrl, getTelUrl } from '../lib/phoneApi';
 import disLogo from '../assets/dis-logo.png';

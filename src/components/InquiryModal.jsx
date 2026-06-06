@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { getWhatsAppUrl } from '../lib/phoneApi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, User, Award, Smartphone, FileText, CheckCircle } from 'lucide-react';
 
@@ -14,15 +15,18 @@ const InquiryModal = ({ isOpen, onClose, initialType = 'admission' }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setInquiryType(initialType);
-      setSubmitted(false);
-      // Reset inputs
-      setParentName('');
-      setStudentName('');
-      setGrade('Grade I');
-      setCountryCode('+91');
-      setPhone('');
-      setMessage('');
+      // Use microtask to avoid sync setState in effect
+      setTimeout(() => {
+        setInquiryType(initialType);
+        setSubmitted(false);
+        // Reset inputs
+        setParentName('');
+        setStudentName('');
+        setGrade('Grade I');
+        setCountryCode('+91');
+        setPhone('');
+        setMessage('');
+      }, 0);
     }
   }, [isOpen, initialType]);
 

@@ -139,8 +139,8 @@ const Hero = ({ openModal }) => {
         </button>
 
         {/* Hero Content Area */}
-        <div className="relative z-20 max-w-[1640px] mx-auto w-full px-6 md:px-12 flex justify-start items-center">
-          <div className="max-w-2xl text-left">
+        <div className="relative z-20 max-w-[1640px] mx-auto w-full px-4 sm:px-6 md:px-12 flex justify-center md:justify-start items-center">
+          <div className="max-w-2xl text-center md:text-left">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -156,17 +156,17 @@ const Hero = ({ openModal }) => {
               </span>
 
               {/* Headline */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-outfit font-black text-white tracking-tight leading-[1.12]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-outfit font-black text-white tracking-tight leading-[1.12]">
                 {slides[currentSlide].title}
               </h1>
 
               {/* Sub-headline */}
-              <p className="text-slate-300 text-sm md:text-base lg:text-lg font-medium max-w-xl leading-relaxed">
+              <p className="text-slate-300 text-sm md:text-base lg:text-lg font-medium max-w-xl mx-auto md:mx-0 leading-relaxed">
                 {slides[currentSlide].description}
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 justify-center md:justify-start">
                 <Magnetic>
                   <button
                     onClick={() => openModal('admission')}

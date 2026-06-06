@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const AnimatedCounter = ({ value, duration = 2, prefix = "", suffix = "" }) => {
@@ -13,7 +13,8 @@ const AnimatedCounter = ({ value, duration = 2, prefix = "", suffix = "" }) => {
       let startTimestamp = null;
       const end = parseInt(value.toString().replace(/,/g, ''), 10);
       if (isNaN(end)) {
-        setCount(value);
+        // defer to avoid sync setState inside effect
+        setTimeout(() => setCount(value), 0);
         return;
       }
 

@@ -1,3 +1,4 @@
+ 
 import React from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { MonitorPlay, GraduationCap, Sparkles, ShieldCheck, Globe } from 'lucide-react';

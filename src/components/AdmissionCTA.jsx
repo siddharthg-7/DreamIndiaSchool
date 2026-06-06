@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, ArrowRight, Zap, Download } from 'lucide-react';
+import { MessageCircle, Zap, Download } from 'lucide-react';
 import { getWhatsAppUrl } from '../lib/phoneApi';
 
 const AdmissionCTA = () => {
