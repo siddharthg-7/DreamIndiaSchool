@@ -9,6 +9,11 @@ const Navbar = ({ openModal }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [expandedMobileDropdown, setExpandedMobileDropdown] = useState(null);
+
+  const toggleMobileDropdown = (name) => {
+    setExpandedMobileDropdown(expandedMobileDropdown === name ? null : name);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +55,7 @@ const Navbar = ({ openModal }) => {
 
   const dropdownData = {
     academics: (
-      <div className="w-full grid grid-cols-5 gap-8 p-8">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 p-5 lg:p-8 bg-transparent">
         <div>
           <h4 className="font-outfit font-extrabold text-[#c28e34] text-sm uppercase tracking-wider mb-4 border-b border-[#c28e34]/20 pb-2">Pre Primary</h4>
           <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
@@ -90,8 +95,8 @@ const Navbar = ({ openModal }) => {
           <div>
             <h4 className="font-outfit font-extrabold text-white text-xs uppercase tracking-widest mb-3">Academic Links</h4>
             <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
-              <li><a href="#admissions" className="hover:text-[#c28e34] transition-colors flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#c28e34]" /> Calendar</a></li>
-              <li><a href="#admissions" className="hover:text-[#c28e34] transition-colors flex items-center gap-1.5"><Award className="w-3.5 h-3.5 text-[#c28e34]" /> Exams</a></li>
+              <li><a href="#announcements" className="hover:text-[#c28e34] transition-colors flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5 text-[#c28e34]" /> Calendar</a></li>
+              <li><a href="#announcements" className="hover:text-[#c28e34] transition-colors flex items-center gap-1.5"><Award className="w-3.5 h-3.5 text-[#c28e34]" /> Exams</a></li>
               <li><a href="#academics" className="hover:text-[#c28e34] transition-colors flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-[#c28e34]" /> Digital Learning</a></li>
               <li><a href="#about" className="hover:text-[#c28e34] transition-colors flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-[#c28e34]" /> Achievements</a></li>
             </ul>
@@ -100,7 +105,7 @@ const Navbar = ({ openModal }) => {
       </div>
     ),
     programs: (
-      <div className="w-full grid grid-cols-5 gap-6 p-8">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6 p-5 lg:p-8 bg-transparent">
         {[
           { title: "AI & Robotics", icon: <Cpu className="w-5 h-5 text-[#c28e34]" />, desc: "Hands-on machine learning, smart electronics, and future technology lab sessions." },
           { title: "STEM Education", icon: <GraduationCap className="w-5 h-5 text-[#c28e34]" />, desc: "Integrated science, math, and engineering concepts with experiential learning." },
@@ -119,7 +124,7 @@ const Navbar = ({ openModal }) => {
       </div>
     ),
     portal: (
-      <div className="w-full grid grid-cols-3 gap-8 p-8">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 p-5 lg:p-8 bg-transparent">
         <div>
           <h4 className="font-outfit font-extrabold text-[#c28e34] text-sm uppercase tracking-wider mb-4 border-b border-[#c28e34]/20 pb-2">Student Portal</h4>
           <ul className="space-y-2.5 text-xs text-slate-300 font-medium">
@@ -319,16 +324,42 @@ const Navbar = ({ openModal }) => {
               </div>
               
               {/* Body links */}
-              <div className="flex-1 flex flex-col py-6 px-6 gap-2 overflow-y-auto text-left">
+              <div 
+                onClick={(e) => {
+                  if (e.target.closest('a')) {
+                    setMobileMenuOpen(false);
+                  }
+                }}
+                className="flex-1 flex flex-col py-6 px-6 gap-2 overflow-y-auto text-left"
+              >
                 {navLinks.map((link) => (
-                  <div key={link.name} className="flex flex-col">
-                    <a
-                      href={link.href}
-                      onClick={() => !link.dropdown && setMobileMenuOpen(false)}
-                      className="text-sm font-bold text-slate-200 hover:text-[#c28e34] py-3 flex items-center justify-between border-b border-white/5 font-outfit uppercase tracking-wider"
-                    >
-                      {link.name}
-                    </a>
+                  <div key={link.name} className="flex flex-col border-b border-white/5">
+                    <div className="flex items-center justify-between">
+                      <a
+                        href={link.href}
+                        className="text-sm font-bold text-slate-200 hover:text-[#c28e34] py-3 flex-1 font-outfit uppercase tracking-wider text-left"
+                      >
+                        {link.name}
+                      </a>
+                      {link.dropdown && (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleMobileDropdown(link.dropdown);
+                          }}
+                          className="p-3 text-slate-400 hover:text-[#c28e34] focus:outline-none bg-transparent border-0 cursor-pointer"
+                          aria-label={`Toggle ${link.name} submenu`}
+                        >
+                          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${expandedMobileDropdown === link.dropdown ? 'rotate-180 text-[#c28e34]' : ''}`} />
+                        </button>
+                      )}
+                    </div>
+                    {link.dropdown && expandedMobileDropdown === link.dropdown && (
+                      <div className="pl-4 pb-4 bg-slate-950/40 rounded-xl mt-1 mb-2 border border-white/5 overflow-hidden">
+                        {dropdownData[link.dropdown]}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

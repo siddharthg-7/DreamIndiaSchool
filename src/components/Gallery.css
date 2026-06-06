@@ -386,6 +386,8 @@
 
   .gallery-lightbox-card {
     grid-template-columns: 1fr;
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .gallery-lightbox-media {

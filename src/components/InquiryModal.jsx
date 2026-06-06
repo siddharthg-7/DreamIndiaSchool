@@ -39,15 +39,14 @@ const InquiryModal = ({ isOpen, onClose, initialType = 'admission' }) => {
 
     const baseText = `Hello, I would like to make an inquiry for Dream India School Tiruvuru.
 
-  Inquiry Type: ${inquiryType === 'visit' ? 'Campus Visit Booking' : 'Admission Inquiry'}
-  Parent Name: ${parentName}
-  Student Name: ${studentName}
-  Grade of Interest: ${grade}
-  Parent Contact: ${countryCode} ${phone}
-  ${message ? `Additional Message: ${message}` : ''}`;
+Inquiry Type: ${inquiryType === 'visit' ? 'Campus Visit Booking' : 'Admission Inquiry'}
+Parent Name: ${parentName}
+Student Name: ${studentName}
+Grade of Interest: ${grade}
+Parent Contact: ${countryCode} ${phone}
+${message ? `Additional Message: ${message}` : ''}`;
 
-    const encodedText = encodeURIComponent(baseText);
-    const whatsappUrl = getWhatsAppUrl({ text: encodedText });
+    const whatsappUrl = getWhatsAppUrl({ text: baseText });
     
     setSubmitted(true);
     

@@ -4,7 +4,7 @@ import { Bell, Download, Calendar, CheckCircle2, BookOpen, Award, Trophy } from 
 import Magnetic from './Magnetic';
 import { getWhatsAppUrl } from '../lib/phoneApi';
 
-const NoticeBoard = () => {
+const NoticeBoard = ({ openModal }) => {
   const applyLink = getWhatsAppUrl({ text: 'Hello, I am interested in admissions at Dream India School Tiruvuru for the academic year 2026-27.' });
   const [activeTab, setActiveTab] = useState('all');
 
@@ -71,7 +71,7 @@ const NoticeBoard = () => {
   );
 
   return (
-    <section id="admissions" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none scroll-mt-28 md:scroll-mt-32">
+    <section id="announcements" className="py-20 md:py-24 px-6 md:px-12 bg-white relative overflow-hidden select-none scroll-mt-28 md:scroll-mt-32">
       <div id="portal" className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10 scroll-mt-28 md:scroll-mt-32">
         
         {/* Left Column: Announcements list */}
@@ -194,14 +194,12 @@ const NoticeBoard = () => {
             </div>
 
             <Magnetic className="w-full">
-              <a 
-                href={applyLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-extrabold text-center text-xs font-outfit uppercase tracking-widest shadow-md transition-all duration-300 cursor-pointer block"
+              <button 
+                onClick={() => openModal && openModal('admission')}
+                className="w-full py-3.5 rounded-md bg-[#c28e34] hover:bg-[#a67526] text-white font-extrabold text-center text-xs font-outfit uppercase tracking-widest shadow-md transition-all duration-300 cursor-pointer block border-0"
               >
                 Start Enrollment
-              </a>
+              </button>
             </Magnetic>
           </motion.div>
         </div>

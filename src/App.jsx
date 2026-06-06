@@ -13,6 +13,7 @@ import AnimatedSection from './components/AnimatedSection';
 import FeatureStrip from './components/FeatureStrip';
 import Gallery from './components/Gallery';
 import NoticeBoard from './components/NoticeBoard';
+import AdmissionCTA from './components/AdmissionCTA';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -117,6 +118,11 @@ function App() {
         {/* Announcements & Admissions Notice Board */}
         <AnimatedSection>
           <NoticeBoard openModal={openModal} />
+        </AnimatedSection>
+
+        {/* Admission Call-to-Action Banner */}
+        <AnimatedSection>
+          <AdmissionCTA />
         </AnimatedSection>
 
         {/* Frequently Asked Questions */}

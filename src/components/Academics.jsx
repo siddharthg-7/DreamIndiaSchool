@@ -1,4 +1,3 @@
-import React from 'react';
 import './Academics.css';
 import { Award, GraduationCap, ClipboardList, FileText, BookOpen, Link } from 'lucide-react';
 
@@ -20,7 +19,7 @@ const Academics = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="card">
-            <img src="https://www.dreamindia.com/images/dis%20(6).jpg" alt="School Programs" className="card-img" />
+            <img src="/images/dis-banner-3-768.jpg" alt="School Programs" className="card-img" />
             <div className="card-body">
               <h3 className="card-title">Foundational to Secondary Programs</h3>
               <p className="card-desc">Comprehensive programs from Nursery to Grade 12 aligned with NEP 2020 and NCERT, ensuring smooth transitions and holistic growth.</p>
@@ -28,7 +27,7 @@ const Academics = () => {
           </div>
 
           <div className="card">
-            <img src="https://www.dreamindia.com/images/dis%20(11).jpg" alt="Code of Conduct" className="card-img" />
+            <img src="/images/dis-banner-1-768.jpg" alt="Code of Conduct" className="card-img" />
             <div className="card-body">
               <h3 className="card-title">Student Code of Conduct</h3>
               <p className="card-desc">Clear expectations for respect, integrity and accountability to build a safe and supportive learning atmosphere.</p>
@@ -36,7 +35,7 @@ const Academics = () => {
           </div>
 
           <div className="card">
-            <img src="https://www.dreamindia.com/images/dis%20(12).jpg" alt="Health and Safety" className="card-img" />
+            <img src="/images/dis-banner-4.png" alt="Health and Safety" className="card-img" />
             <div className="card-body">
               <h3 className="card-title">Health & Safety</h3>
               <p className="card-desc">Strict hygiene standards, regular health checkups and well‑equipped emergency facilities on campus.</p>
