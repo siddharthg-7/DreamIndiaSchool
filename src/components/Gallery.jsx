@@ -73,12 +73,19 @@ const galleryItems = [
 const GalleryCard = ({ item, onSelect, onMeasure }) => {
   const [loaded, setLoaded] = useState(false);
   const cardRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     if (cardRef.current) {
       onMeasure?.(cardRef.current, item.id);
     }
   }, [item.id, onMeasure]);
+
+  useEffect(() => {
+    if (imageRef.current?.complete && imageRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, [item.image]);
 
   const handleMove = (event) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -113,11 +120,13 @@ const GalleryCard = ({ item, onSelect, onMeasure }) => {
         <div className={`gallery-media ${loaded ? 'is-loaded' : ''}`}>
           <div className="gallery-skeleton" aria-hidden="true" />
           <img
+            ref={imageRef}
             src={item.image}
             alt={item.title}
             loading="eager"
             fetchPriority={item.id === 1 ? 'high' : 'auto'}
             onLoad={() => setLoaded(true)}
+            onError={() => setLoaded(true)}
             className="gallery-image"
           />
           <div className="gallery-grain" aria-hidden="true" />
