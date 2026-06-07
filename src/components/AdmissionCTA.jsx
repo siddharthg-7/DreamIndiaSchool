@@ -23,7 +23,6 @@ const AdmissionCTA = () => {
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-glow to-transparent opacity-50"></div>
           
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-glow/10 border border-cyan-glow/20 text-cyan-glow mb-8">
-            <Zap className="w-4 h-4 animate-bounce" />
             <span className="text-sm font-semibold tracking-wide uppercase">Admissions Open 2026-27</span>
           </div>
 
