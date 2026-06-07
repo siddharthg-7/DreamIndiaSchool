@@ -1,5 +1,53 @@
+import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { ArrowRight, Cpu, Beaker, Code, Dumbbell, Globe } from 'lucide-react';
+import { getSanityPrograms } from '../lib/sanity';
+
+const iconMap = {
+  cpu: <Cpu className="w-4 h-4 text-[#c28e34]" />,
+  beaker: <Beaker className="w-4 h-4 text-[#c28e34]" />,
+  code: <Code className="w-4 h-4 text-[#c28e34]" />,
+  dumbbell: <Dumbbell className="w-4 h-4 text-[#c28e34]" />,
+  globe: <Globe className="w-4 h-4 text-[#c28e34]" />
+};
+
+const staticPrograms = [
+  {
+    title: "AI & Robotics",
+    category: "Innovation",
+    desc: "Building future-ready skills in electronics, mechanics, and algorithm design through hands-on labs.",
+    image: "/images/dis-banner-5.png",
+    icon: <Cpu className="w-4 h-4 text-[#c28e34]" />
+  },
+  {
+    title: "STEM Education",
+    category: "Science & Math",
+    desc: "Integrated approach to science, technology, engineering, and math for practical conceptual depth.",
+    image: "/images/dis-banner-3.png",
+    icon: <Beaker className="w-4 h-4 text-[#c28e34]" />
+  },
+  {
+    title: "Coding for Kids",
+    category: "Logic & Tech",
+    desc: "Introducing programming principles, block coding, and problem-solving paradigms from early grades.",
+    image: "/images/dis-banner-4.png",
+    icon: <Code className="w-4 h-4 text-[#c28e34]" />
+  },
+  {
+    title: "Sports Excellence",
+    category: "Athletics",
+    desc: "Professional sports mentoring, track & field guidelines, and physical fitness tracking.",
+    image: "/images/dis-banner-2.png",
+    icon: <Dumbbell className="w-4 h-4 text-[#c28e34]" />
+  },
+  {
+    title: "Language Programs",
+    category: "Communication",
+    desc: "Comprehensive vocabulary development, public speaking training, and global English mastery.",
+    image: "/images/dis-banner-1.png",
+    icon: <Globe className="w-4 h-4 text-[#c28e34]" />
+  }
+];
 
 // Spotlight hover card wrapper for premium 21st dev aesthetic
 const SpotlightProgramCard = ({ children, className, index }) => {
@@ -46,43 +94,21 @@ const SpotlightProgramCard = ({ children, className, index }) => {
 };
 
 const FeaturedPrograms = () => {
-  const programs = [
-    {
-      title: "AI & Robotics",
-      category: "Innovation",
-      desc: "Building future-ready skills in electronics, mechanics, and algorithm design through hands-on labs.",
-      image: "/images/dis-banner-5.png",
-      icon: <Cpu className="w-4 h-4 text-[#c28e34]" />
-    },
-    {
-      title: "STEM Education",
-      category: "Science & Math",
-      desc: "Integrated approach to science, technology, engineering, and math for practical conceptual depth.",
-      image: "/images/dis-banner-3.png",
-      icon: <Beaker className="w-4 h-4 text-[#c28e34]" />
-    },
-    {
-      title: "Coding for Kids",
-      category: "Logic & Tech",
-      desc: "Introducing programming principles, block coding, and problem-solving paradigms from early grades.",
-      image: "/images/dis-banner-4.png",
-      icon: <Code className="w-4 h-4 text-[#c28e34]" />
-    },
-    {
-      title: "Sports Excellence",
-      category: "Athletics",
-      desc: "Professional sports mentoring, track & field guidelines, and physical fitness tracking.",
-      image: "/images/dis-banner-2.png",
-      icon: <Dumbbell className="w-4 h-4 text-[#c28e34]" />
-    },
-    {
-      title: "Language Programs",
-      category: "Communication",
-      desc: "Comprehensive vocabulary development, public speaking training, and global English mastery.",
-      image: "/images/dis-banner-1.png",
-      icon: <Globe className="w-4 h-4 text-[#c28e34]" />
-    }
-  ];
+  const [programs, setPrograms] = useState(staticPrograms);
+
+  useEffect(() => {
+    let active = true;
+    getSanityPrograms().then(data => {
+      if (active && data) {
+        const mapped = data.map(item => ({
+          ...item,
+          icon: iconMap[item.iconName?.toLowerCase()] || <Cpu className="w-4 h-4 text-[#c28e34]" />
+        }));
+        setPrograms(mapped);
+      }
+    });
+    return () => { active = false; };
+  }, []);
 
   return (
     <section id="programs" className="py-20 md:py-24 px-6 md:px-12 bg-slate-50 border-b border-slate-100 relative overflow-hidden select-none scroll-mt-28 md:scroll-mt-32">

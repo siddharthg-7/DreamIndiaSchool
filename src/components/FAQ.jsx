@@ -1,32 +1,44 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { getSanityFAQs } from '../lib/sanity';
+
+const staticFaqs = [
+  {
+    q: "What is the curriculum followed at Dream India School?",
+    a: "We strictly follow the national CBSE curriculum, seamlessly integrated with modern, future-ready coding paradigms, AI & robotics lab sessions, and analytical conceptual learning models."
+  },
+  {
+    q: "What are the key safety and security measures on campus?",
+    a: "Our campus is equipped with 24/7 CCTV smart surveillance coverage, trained security personnel, strict student sign-out policies, sanitization checks, and secure visitor entrance protocols."
+  },
+  {
+    q: "Does the school provide sports mentoring and physical training?",
+    a: "Yes! We emphasize holistic development, offering professional outdoor coaching for sports like track & field events, football, basketball, and cricket on our expansive play fields."
+  },
+  {
+    q: "How are smart technologies integrated in classrooms?",
+    a: "Every classroom features smart digital audio-visual interactive boards and air-conditioned layouts, ensuring mentors can present visual lessons and kids can grasp complex scientific subjects with ease."
+  },
+  {
+    q: "What is the process and eligibility for admissions?",
+    a: "Admissions are open for Classes Nursery to X. Parents can submit an online inquiry, take a campus visit, and secure enrollment based on seat availability and basic cognitive readiness indicators."
+  }
+];
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [faqs, setFaqs] = useState(staticFaqs);
 
-  const faqs = [
-    {
-      q: "What is the curriculum followed at Dream India School?",
-      a: "We strictly follow the national CBSE curriculum, seamlessly integrated with modern, future-ready coding paradigms, AI & robotics lab sessions, and analytical conceptual learning models."
-    },
-    {
-      q: "What are the key safety and security measures on campus?",
-      a: "Our campus is equipped with 24/7 CCTV smart surveillance coverage, trained security personnel, strict student sign-out policies, sanitization checks, and secure visitor entrance protocols."
-    },
-    {
-      q: "Does the school provide sports mentoring and physical training?",
-      a: "Yes! We emphasize holistic development, offering professional outdoor coaching for sports like track & field events, football, basketball, and cricket on our expansive play fields."
-    },
-    {
-      q: "How are smart technologies integrated in classrooms?",
-      a: "Every classroom features smart digital audio-visual interactive boards and air-conditioned layouts, ensuring mentors can present visual lessons and kids can grasp complex scientific subjects with ease."
-    },
-    {
-      q: "What is the process and eligibility for admissions?",
-      a: "Admissions are open for Classes Nursery to X. Parents can submit an online inquiry, take a campus visit, and secure enrollment based on seat availability and basic cognitive readiness indicators."
-    }
-  ];
+  useEffect(() => {
+    let active = true;
+    getSanityFAQs().then(data => {
+      if (active && data) {
+        setFaqs(data);
+      }
+    });
+    return () => { active = false; };
+  }, []);
 
   const handleToggle = (idx) => {
     setOpenIndex(openIndex === idx ? null : idx);

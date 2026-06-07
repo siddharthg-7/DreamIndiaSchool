@@ -1,12 +1,74 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bell, Download, Calendar, CheckCircle2, BookOpen, Award, Trophy } from 'lucide-react';
 import Magnetic from './Magnetic';
 import { getWhatsAppUrl } from '../lib/phoneApi';
+import { getSanityNotices } from '../lib/sanity';
+
+const iconMap = {
+  book: <BookOpen className="w-3.5 h-3.5" />,
+  download: <Download className="w-3.5 h-3.5" />,
+  calendar: <Calendar className="w-3.5 h-3.5" />,
+  award: <Award className="w-3.5 h-3.5" />,
+  trophy: <Trophy className="w-3.5 h-3.5" />,
+  bell: <Bell className="w-3.5 h-3.5" />
+};
+
+const staticNotices = [
+  {
+    date: "March 20, 2026",
+    category: "academics",
+    title: "CBSE Curriculum Update - Grade IX & X",
+    desc: "Revised guidelines and syllabus textbooks list issued by board for academic session 2026-27.",
+    linkText: "View Syllabus",
+    icon: <BookOpen className="w-3.5 h-3.5" />
+  },
+  {
+    date: "March 18, 2026",
+    category: "sports",
+    title: "Annual Sports Day 2026 Registration",
+    desc: "Registration for track and field events is now open for students from Class V to X.",
+    linkText: "Download Circular",
+    icon: <Download className="w-3.5 h-3.5" />
+  },
+  {
+    date: "March 15, 2026",
+    category: "academics",
+    title: "Parent-Teacher Conference (Primary Wing)",
+    desc: "The bi-annual meet to discuss child progress will be held this Saturday from 9:00 AM.",
+    linkText: "View Schedule",
+    icon: <Calendar className="w-3.5 h-3.5" />
+  },
+  {
+    date: "March 12, 2026",
+    category: "exams",
+    title: "Class X Board Pre-Board Schedule",
+    desc: "Pre-board preparatory examinations schedule and model test paper downloads are now live.",
+    linkText: "Download Date Sheet",
+    icon: <Download className="w-3.5 h-3.5" />
+  },
+  {
+    date: "March 08, 2026",
+    category: "exams",
+    title: "Quarterly Evaluation Reports Released",
+    desc: "Report cards for nursery and primary wing are active on the digital student profile portal.",
+    linkText: "Student Portal",
+    icon: <Award className="w-3.5 h-3.5" />
+  },
+  {
+    date: "March 05, 2026",
+    category: "sports",
+    title: "Inter-School Chess Championship Wins",
+    desc: "Congratulations to our junior chess team for securing first place in the NTR district games.",
+    linkText: "View Gallery",
+    icon: <Trophy className="w-3.5 h-3.5" />
+  }
+];
 
 const NoticeBoard = ({ openModal }) => {
   const applyLink = getWhatsAppUrl({ text: 'Hello, I am interested in admissions at Dream India School Tiruvuru for the academic year 2026-27.' });
   const [activeTab, setActiveTab] = useState('all');
+  const [notices, setNotices] = useState(staticNotices);
 
   const tabs = [
     { id: 'all', label: 'All Updates' },
@@ -15,56 +77,19 @@ const NoticeBoard = ({ openModal }) => {
     { id: 'sports', label: 'Sports & Events' }
   ];
 
-  const notices = [
-    {
-      date: "March 20, 2026",
-      category: "academics",
-      title: "CBSE Curriculum Update - Grade IX & X",
-      desc: "Revised guidelines and syllabus textbooks list issued by board for academic session 2026-27.",
-      linkText: "View Syllabus",
-      icon: <BookOpen className="w-3.5 h-3.5" />
-    },
-    {
-      date: "March 18, 2026",
-      category: "sports",
-      title: "Annual Sports Day 2026 Registration",
-      desc: "Registration for track and field events is now open for students from Class V to X.",
-      linkText: "Download Circular",
-      icon: <Download className="w-3.5 h-3.5" />
-    },
-    {
-      date: "March 15, 2026",
-      category: "academics",
-      title: "Parent-Teacher Conference (Primary Wing)",
-      desc: "The bi-annual meet to discuss child progress will be held this Saturday from 9:00 AM.",
-      linkText: "View Schedule",
-      icon: <Calendar className="w-3.5 h-3.5" />
-    },
-    {
-      date: "March 12, 2026",
-      category: "exams",
-      title: "Class X Board Pre-Board Schedule",
-      desc: "Pre-board preparatory examinations schedule and model test paper downloads are now live.",
-      linkText: "Download Date Sheet",
-      icon: <Download className="w-3.5 h-3.5" />
-    },
-    {
-      date: "March 08, 2026",
-      category: "exams",
-      title: "Quarterly Evaluation Reports Released",
-      desc: "Report cards for nursery and primary wing are active on the digital student profile portal.",
-      linkText: "Student Portal",
-      icon: <Award className="w-3.5 h-3.5" />
-    },
-    {
-      date: "March 05, 2026",
-      category: "sports",
-      title: "Inter-School Chess Championship Wins",
-      desc: "Congratulations to our junior chess team for securing first place in the NTR district games.",
-      linkText: "View Gallery",
-      icon: <Trophy className="w-3.5 h-3.5" />
-    }
-  ];
+  useEffect(() => {
+    let active = true;
+    getSanityNotices().then(data => {
+      if (active && data) {
+        const mapped = data.map(item => ({
+          ...item,
+          icon: iconMap[item.iconName?.toLowerCase()] || <Bell className="w-3.5 h-3.5" />
+        }));
+        setNotices(mapped);
+      }
+    });
+    return () => { active = false; };
+  }, []);
 
   const filteredNotices = notices.filter(
     notice => activeTab === 'all' || notice.category === activeTab
